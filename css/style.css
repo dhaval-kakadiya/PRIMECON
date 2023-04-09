@@ -3,6 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+body{
+    scroll-behavior: smooth;
+}
 :root{
     --Poppins-font: 'Poppins';
     --white-color:  #ffffff;
@@ -68,7 +71,7 @@ buttons
 }
 @media (max-width:992px){
     .buttons{
-        margin-bottom: 20px;
+        margin: 0 auto;
     }
 }
 /* ===========
@@ -77,11 +80,21 @@ buttons
 
 
 /* section-1 start  */
-.navbar{
-    background-color: var(--primary-color);
+.navbar {
+	position: fixed;
+	height: 80px;
+	background: var(--primary-color);
+	top: 0;
+	width: 100%;
+	z-index: 100;
+	transition: all .3s ease;
+	box-shadow: 0 1px 25px rgba(0,0,0, .1);
+}
+.navbar.hide {
+	top: -80px;
 }
 .nav-link{
-    font-family: var(--Poppins-font);
+    font-family: var(--Poppins-font) !important;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -113,11 +126,16 @@ buttons
 .navbar_btn:hover a{
     color: var(--primary-color);
 }
+@media (max-width:992px){
+    .navbar_btn{
+        padding: 0px 8px;
+    }
+}
 /* section-1 end  */
 
 /* section-2 start  */
 .headding_h{
-    font-family: var(--Poppins-font);
+    font-family: var(--Poppins-font) !important;
     font-style: normal;
     font-weight: 700;
     font-size: 45px;
@@ -130,7 +148,7 @@ buttons
     color: var(--primary-color);
 }
 .headding_text{
-    font-family: var(--Poppins-font);
+    font-family: var(--Poppins-font) !important;
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -156,6 +174,7 @@ buttons
 @media (max-width:992px){
     .prime_hero img{
         border-radius: 0px 0px 0px 0px;
+        margin-top: 20px;
     }
     .headding_h{
         margin-top: 20px;
@@ -184,6 +203,7 @@ buttons
 @media (max-width:992px){
     .prime_weare img{
         border-radius: 0px 0px 0px 0px;
+        margin-top: 20px;
     }
     .prime_weare{
         padding: 50px 0px 50px 0px;
@@ -241,7 +261,9 @@ buttons
 @media (max-width:992px){
     .prime_service{
         padding: 50px 0px 50px 0px;
+        border-radius: 50px 50px 0px 0px;
     }
+
 }
 /* section-4 end  */
 
@@ -410,5 +432,11 @@ buttons
     line-height: 35px;
     color: var(--white-color);
     margin-bottom: 22px;
+}
+@media (max-width:992px){
+    .prime_footer{
+        background-color: var(--primary-color);
+        padding: 50px 0px 50px 0px;
+    }
 }
 /* section-7 end  */
