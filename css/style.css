@@ -82,8 +82,8 @@ buttons
 /* section-1 start  */
 .navbar {
 	position: fixed;
-	height: 80px;
-	background: var(--primary-color);
+	/* height: 80px; */
+	background-color: var(--primary-color);
 	top: 0;
 	width: 100%;
 	z-index: 100;
