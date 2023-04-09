@@ -40,7 +40,10 @@ buttons
     border: 2px solid var(--primary-color);
     padding: 10px 20px 10px 20px;
     background-color: var(--primary-color);
-    transition: 2s;
+    transition: 1s;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
 }
 .buttons a{
     font-family: var(--Poppins-font);
@@ -100,7 +103,7 @@ buttons
 .navbar_btn{
     background-color: transparent;
     border: 1px solid var(--white-color);
-    transition: 2s;
+    transition: 1s;
 }
 .navbar_btn:hover{
     background-color: var(--white-color);
@@ -112,7 +115,7 @@ buttons
 /* section-1 end  */
 
 /* section-2 start  */
-.prime_hero h1{
+.headding_h{
     font-family: var(--Poppins-font);
     font-style: normal;
     font-weight: 700;
@@ -125,7 +128,7 @@ buttons
 .prime_hero h1 span{
     color: var(--primary-color);
 }
-.prime_hero p{
+.headding_text{
     font-family: var(--Poppins-font);
     font-style: normal;
     font-weight: 400;
@@ -139,17 +142,135 @@ buttons
 .prime_hero img{
     border-radius: 0px 0px 0px 40%;
 }
+@media (max-width:768px){
+    .headding_h{
+        font-size: 30px;
+        line-height: 35px;
+    }
+    .headding_text{
+        font-size: 15px;
+        line-height: 20px;
+    }
+}
 @media (max-width:992px){
     .prime_hero img{
         border-radius: 0px 0px 0px 0px;
     }
-    .prime_hero h1{
+    .headding_h{
         margin-top: 20px;
     }
 }
 /* section-2 end  */
 
 /* section-3 start  */
-
+.prime_weare{
+    padding: 50px 0px 70px 0px;
+    background-image: url(../image/whoweare-bg1.png), url(../image/whoweare-bg2.png);
+    background-repeat: no-repeat;
+    background-position: top left, right bottom;
+    background-size: 70px;
+}
+.prime_weare img{
+    border-radius: 10px 130px 130px 0px;
+}
+.prime_weare .headding_h{
+    color: var(--primary-color);
+}
+.prime_weare .headding_text span{
+    color: var(--black-color);
+    font-weight: 500;
+}
+@media (max-width:992px){
+    .prime_weare img{
+        border-radius: 0px 0px 0px 0px;
+    }
+    .prime_weare{
+        padding: 50px 0px 50px 0px;
+    }
+}
 /* section-3 end  */
+
+/* section-4 start  */
+.prime_service{
+    padding: 70px 0px 70px 0px;
+    background-color: var(--primary-color);
+    border-radius: 100px 100px 0px 0px;
+}
+.prime_service .headding_h{
+    color: var(--white-color);
+}
+.prime_service .headding_text{
+    color: #83A2F3;
+    margin-bottom: 60px;
+}
+.service_number{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 66px;
+    line-height: 60px;
+    letter-spacing: -0.04em;
+    color: #3441AE;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+.service_text{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 29px;
+    letter-spacing: -0.04em;
+    color: #FFFFFF;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+@media (max-width:992px){
+    .prime_service{
+        padding: 50px 0px 50px 0px;
+    }
+}
+/* section-4 end  */
+
+/* section-5 start  */
+.prime_Project{
+    padding: 70px 0px 70px 0px;
+    background-image: url(../image/project-bg1.png), url(../image/project-bg2.png);
+    background-repeat: no-repeat;
+    background-position: left top, right top;
+    background-size: 10%, 10%;
+}
+.prime_Project .headding_h{
+    color: var(--primary-color);
+}
+.prime_Project .nav-pills{
+    background-color: var(--primary-color);
+    padding: 8px 0px 8px 0px;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: var(--primary-color) !important;
+    background-color: var(--white-color) !important;
+}
+.prime_Project .nav-pills .nav-link {
+    background: 0 0;
+    border: 0;
+    border-radius: 0px !important;
+    font-weight: 500 !important;
+}
+.prime_Project .nav{
+    flex-wrap: nowrap !important;
+}
+@media (max-width:768px){
+    .prime_Project .nav-pills .nav-link {
+        font-size: 13px;
+    }
+}
+@media (max-width:992px){
+    .prime_Project{
+        padding: 50px 0px 50px 0px;
+    }
+}
+/* section-5 end  */
 
