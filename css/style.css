@@ -43,7 +43,8 @@ buttons
     transition: 1s;
     display: flex;
     align-items: center;
-    margin: 0 auto;
+    box-shadow: 0px 8px 10px 0px #212D9266;
+
 }
 .buttons a{
     font-family: var(--Poppins-font);
@@ -284,3 +285,130 @@ buttons
 }
 /* section-5 end  */
 
+/* section-6 start  */
+.prime_choosus{
+    padding: 70px 0px 0px 0px;
+    background-color: #E9F1FF;
+}
+.prime_choosus .headding_h{
+    color: var(--primary-color);
+}
+.choosus_cards{
+    background-color: var(--primary-color);
+}
+.choosus_cards div{
+    background-color: #E9F1FF;
+    padding: 18px;
+    width: 31%;
+}
+.choos_hedding{
+    font-family: var(--Poppins-font);
+    font-style: normal;
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 24px;
+    letter-spacing: -0.04em;
+    color: var(--primary-color);
+    margin: 14px 0px 14px 0px;
+}
+.choos_text{
+    font-family: var(--Poppins-font);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: -0.04em;
+    color: var(--text-color);
+}
+.form{
+    background-color: #c8d4ea95;
+    padding: 30px 30px 30px 30px !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid #C8D3E8;
+    position: relative;
+    top: 130px;
+}
+.form-control:focus {
+    color: var(--primary-color) !important;
+    background-color: #E9F1FF !important;
+    border: 2px solid var(--primary-color) !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+.form-control{
+    border-radius: 0px !important;
+    background-color: #E9F1FF;
+    border-color: #E9F1FF;
+}
+.form_first_headding{
+    font-family: var(--Poppins-font);
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 120%;
+    letter-spacing: -0.04em;
+    color: var(--text-color);
+}
+.form_headding{
+    font-family: var(--Poppins-font);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 120%;
+    letter-spacing: -0.04em;
+    color: var(--primary-color);
+    margin-bottom: 29px;
+}
+@media (max-width:768px){
+    .choosus_cards div{
+        width: 100%;
+    } 
+}
+@media (max-width:992px){
+    .prime_choosus{
+        padding: 50px 0px 50px 0px;
+    } 
+    .form{
+        position: static;
+        margin-top: 50px !important;
+    }  
+}
+/* section-6 end  */
+
+/* section-7 start  */
+.prime_footer{
+    background-color: var(--primary-color);
+    padding: 200px 0px 70px 0px;
+}
+.prime_footer img{
+    margin-bottom: 50px;
+}
+.prime_footer ul{
+    list-style-type: none;
+    padding: 0px;
+}
+.prime_footer ul li{
+    margin-bottom: 20px;
+}
+.prime_footer ul li i{
+    margin-right: 5px;
+}
+.prime_footer ul li a{
+    font-family: var(--Poppins-font);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: var(--white-color);
+    text-decoration: none;
+}
+.footer_headding{
+    font-family: var(--Poppins-font);
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 35px;
+    color: var(--white-color);
+    margin-bottom: 22px;
+}
+/* section-7 end  */
