@@ -92,9 +92,9 @@ buttons
 	transition: all .3s ease;
 	/* box-shadow: 0 1px 25px rgba(0,0,0, .1); */
 }
-.navbar.hide {
+/* .navbar.hide {
 	top: -80px;
-}
+} */
 .nav-link{
     font-family: var(--Poppins-font) !important;
     font-style: normal;
