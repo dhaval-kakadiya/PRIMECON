@@ -276,7 +276,6 @@ buttons
     margin-bottom: 60px;
 }
 .service_number{
-    font-family: 'Poppins';
     font-style: normal;
     font-weight: 700;
     font-size: 66px;
@@ -288,7 +287,6 @@ buttons
     flex-grow: 0;
 }
 .service_text{
-    /* font-family: 'Poppins'; */
     font-style: normal;
     font-weight: 700;
     font-size: 23px;
