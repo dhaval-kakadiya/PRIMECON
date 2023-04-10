@@ -288,7 +288,7 @@ buttons
     flex-grow: 0;
 }
 .service_text{
-    font-family: 'Poppins';
+    /* font-family: 'Poppins'; */
     font-style: normal;
     font-weight: 700;
     font-size: 23px;
