@@ -3,7 +3,7 @@
 //   });
 
 
-  
+// navbar script 
 var header = document.querySelector(".navbar");
 var navbarHeight = header.offsetHeight;
 var lastScrollTop = 0;
@@ -20,3 +20,22 @@ function scrollHide() {
   }
   lastScrollTop = st <= 0 ? 0 : st;
 }
+// navbar script 
+
+
+// scroll button 
+var btn = $('#buttonnn');
+
+$(window).scroll(function() {
+  if ($(window).scrollTop() > 300) {
+    btn.addClass('show');
+  } else {
+    btn.removeClass('show');
+  }
+});
+
+btn.on('click', function(e) {
+  e.preventDefault();
+  $('html, body').animate({scrollTop:0}, '300');
+});
+// scroll button 
