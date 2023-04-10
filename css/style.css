@@ -31,9 +31,9 @@ scrollbar button
     visibility: hidden;
     z-index: 1000;
     padding: 6px 10px;
-    background-color: #c8d4ea95;
-    backdrop-filter: blur(10px);
-    border: 2px solid transparent;
+    background-color: #c8d4ea95 !important;
+    backdrop-filter: blur(30px) !important;
+    border: 1px solid #C8D3E8;
     transition: 0.4s;
   }
 #buttonnn i{
@@ -42,7 +42,7 @@ scrollbar button
   #buttonnn:hover {
     cursor: pointer;
     background-color: #E9F1FF;
-    border: 2px solid var(--primary-color);
+    border: 1px solid var(--primary-color);
   }
   #buttonnn:hover i{
     color: var(--primary-color);
@@ -171,7 +171,8 @@ buttons
     color: var(--primary-color);
 }
 .navbar-toggler-icon i{
-    font-size: 32px;
+    font-size: 22px;
+    margin-top: 5px;
 }
 @media (max-width:992px){
     .navbar_btn{
@@ -242,7 +243,7 @@ buttons
     background-image: url(../image/whoweare-bg1.png), url(../image/whoweare-bg2.png);
     background-repeat: no-repeat;
     background-position: top left, right bottom;
-    background-size: 70px;
+    background-size: 70px, 70px;
     border: 3px solid #EFF1FF;
 }
 .prime_weare img{
@@ -265,6 +266,9 @@ buttons
     }
     .prime_weare{
         border: 0px solid #EFF1FF;
+    }
+    .prime_weare{
+        background-size: 50px, 70px;
     }
 }
 /* section-3 end  */
