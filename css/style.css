@@ -5,10 +5,10 @@
 }
 body{
     scroll-behavior: smooth;
-    font-family: 'poppins-bold', sans-serif !important;
+    font-family: var(--Poppins-font) !important;
 }
 :root{
-    --Poppins-font: 'Poppins';
+    --Poppins-font: 'poppins', sans-serif;
     --white-color:  #ffffff;
     --black-color: #000;
     --primary-color: #212D92;
