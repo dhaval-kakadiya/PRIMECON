@@ -5,6 +5,7 @@
 }
 body{
     scroll-behavior: smooth;
+    font-family: var(--Poppins-font) !important;
 }
 :root{
     --Poppins-font: 'Poppins';
@@ -96,7 +97,7 @@ buttons
 	top: -80px;
 }
 .nav-link{
-    font-family: var(--Poppins-font) !important;
+    /* font-family: var(--Poppins-font) !important; */
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -137,7 +138,7 @@ buttons
 
 /* section-2 start  */
 .headding_h{
-    font-family: var(--Poppins-font) !important;
+    /* font-family: var(--Poppins-font) !important; */
     font-style: normal;
     font-weight: 700;
     font-size: 45px;
@@ -150,7 +151,7 @@ buttons
     color: var(--primary-color);
 }
 .headding_text{
-    font-family: var(--Poppins-font) !important;
+    /* font-family: var(--Poppins-font) !important; */
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -330,7 +331,7 @@ buttons
     width: 31%;
 }
 .choos_hedding{
-    font-family: var(--Poppins-font);
+    /* font-family: var(--Poppins-font); */
     font-style: normal;
     font-weight: 600;
     font-size: 19px;
@@ -340,7 +341,7 @@ buttons
     margin: 14px 0px 14px 0px;
 }
 .choos_text{
-    font-family: var(--Poppins-font);
+    /* font-family: var(--Poppins-font); */
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -369,7 +370,7 @@ buttons
     border-color: #E9F1FF;
 }
 .form_first_headding{
-    font-family: var(--Poppins-font);
+    /* font-family: var(--Poppins-font); */
     font-style: normal;
     font-weight: 500;
     font-size: 32px;
@@ -378,7 +379,7 @@ buttons
     color: var(--text-color);
 }
 .form_headding{
-    font-family: var(--Poppins-font);
+    /* font-family: var(--Poppins-font); */
     font-style: normal;
     font-weight: 700;
     font-size: 32px;
@@ -422,7 +423,7 @@ buttons
     margin-right: 5px;
 }
 .prime_footer ul li a{
-    font-family: var(--Poppins-font);
+    /* font-family: var(--Poppins-font); */
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -431,7 +432,7 @@ buttons
     text-decoration: none;
 }
 .footer_headding{
-    font-family: var(--Poppins-font);
+    /* font-family: var(--Poppins-font); */
     font-style: normal;
     font-weight: 600;
     font-size: 30px;
