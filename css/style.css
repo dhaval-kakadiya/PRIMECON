@@ -19,9 +19,7 @@ scrollbar button
 ================== */
 #buttonnn {
     display: inline-block;
-    background-color: var(--primary-color);
-    /* width: 50px;
-    height: 50px; */
+    /* background-color: var(--primary-color); */
     text-align: center;
     border-radius: 4px;
     position: fixed;
@@ -32,10 +30,14 @@ scrollbar button
     opacity: 0;
     visibility: hidden;
     z-index: 1000;
-    padding: 10px;
+    padding: 6px 10px;
+    background-color: #c8d4ea95;
+    backdrop-filter: blur(10px);
+    border: 2px solid transparent;
+    transition: 0.4s;
   }
 #buttonnn i{
-    color: var(--white-color);
+    color: var(--primary-color);
 }
   #buttonnn:hover {
     cursor: pointer;
@@ -127,21 +129,17 @@ buttons
 /* section-1 start  */
 .navbar {
 	position: fixed;
-	/* height: 80px; */
 	background-color: var(--primary-color);
 	top: 0;
     right: 0;
     left: 0;
-	/* width: 100%; */
 	z-index: 999;
 	transition: all .3s ease;
-	/* box-shadow: 0 1px 25px rgba(0,0,0, .1); */
 }
 .navbar.hide {
 	top: -80px;
 }
 .nav-link{
-    /* font-family: var(--Poppins-font) !important; */
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -159,7 +157,6 @@ buttons
 }
 .nav-link:focus, .nav-link:hover {
     color: var(--white-color);
-    /* border-bottom: 1px solid var(--white-color); */
 }
 .navbar_btn{
     background-color: transparent;
@@ -185,7 +182,6 @@ buttons
 
 /* section-2 start  */
 .headding_h{
-    /* font-family: var(--Poppins-font) !important; */
     font-style: normal;
     font-weight: 700;
     font-size: 45px;
@@ -198,7 +194,6 @@ buttons
     color: var(--primary-color);
 }
 .headding_text{
-    /* font-family: var(--Poppins-font) !important; */
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -266,7 +261,10 @@ buttons
         margin-top: 20px;
     }
     .prime_weare{
-        padding: 00px 0px 50px 0px;
+        padding: 20px 0px 50px 0px;
+    }
+    .prime_weare{
+        border: 0px solid #EFF1FF;
     }
 }
 /* section-3 end  */
@@ -308,7 +306,6 @@ buttons
 }
 .services_name{
     height: 50px;
-    /* border: 1px solid red; */
     gap: 16px;
     margin-bottom: 16px;
 }
@@ -332,7 +329,6 @@ buttons
     }
     .services_name{
         height: 50px;
-        /* border: 1px solid red; */
         gap: 7px;
         margin-bottom: 14px;
     }
@@ -354,7 +350,6 @@ buttons
     color: var(--primary-color);
 }
 .prime_Project .nav-pills{
-    /* background-color: var(--primary-color); */
     padding: 8px 0px 8px 0px;
 }
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
@@ -378,6 +373,9 @@ buttons
 @media (max-width:768px){
     .prime_Project .nav-pills .nav-link {
         font-size: 13px;
+    }
+    .prime_Project{
+        background-size: 20%, 20%;
     }
 }
 @media (max-width:992px){
@@ -404,7 +402,6 @@ buttons
     width: 31%;
 }
 .choos_hedding{
-    /* font-family: var(--Poppins-font); */
     font-style: normal;
     font-weight: 600;
     font-size: 19px;
@@ -414,7 +411,6 @@ buttons
     margin: 14px 0px 14px 0px;
 }
 .choos_text{
-    /* font-family: var(--Poppins-font); */
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -443,7 +439,6 @@ buttons
     border-color: #E9F1FF;
 }
 .form_first_headding{
-    /* font-family: var(--Poppins-font); */
     font-style: normal;
     font-weight: 500;
     font-size: 32px;
@@ -452,7 +447,6 @@ buttons
     color: var(--text-color);
 }
 .form_headding{
-    /* font-family: var(--Poppins-font); */
     font-style: normal;
     font-weight: 700;
     font-size: 32px;
@@ -480,7 +474,7 @@ buttons
 /* section-7 start  */
 .prime_footer{
     background-color: var(--primary-color);
-    padding: 200px 0px 70px 0px;
+    padding: 200px 0px 50px 0px;
 }
 .prime_footer img{
     margin-bottom: 50px;
@@ -496,7 +490,6 @@ buttons
     margin-right: 5px;
 }
 .prime_footer ul li a{
-    /* font-family: var(--Poppins-font); */
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -505,13 +498,24 @@ buttons
     text-decoration: none;
 }
 .footer_headding{
-    /* font-family: var(--Poppins-font); */
     font-style: normal;
     font-weight: 600;
     font-size: 30px;
     line-height: 35px;
     color: var(--white-color);
     margin-bottom: 22px;
+}
+.copyright{
+    margin-top: 50px;
+}
+.copyright p{
+    font-size: 16px; 
+    font-weight: 400;
+    color: var(--white-color);
+}
+.copyright p a{
+    text-decoration: none;
+    color: var(--white-color);
 }
 @media (max-width:992px){
     .prime_footer{
