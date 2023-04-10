@@ -173,6 +173,9 @@ buttons
 .navbar_btn:hover a{
     color: var(--primary-color);
 }
+.navbar-toggler-icon i{
+    font-size: 32px;
+}
 @media (max-width:992px){
     .navbar_btn{
         padding: 0px 8px;
@@ -203,7 +206,7 @@ buttons
     letter-spacing: 0.01em;
     text-transform: capitalize;
     color: var(--text-color);
-    margin-bottom: 20px;
+    margin-bottom: 26px;
 }
 .prime_hero img{
     border-radius: 0px 0px 0px 40%;
@@ -231,6 +234,11 @@ buttons
         margin-top: 100px;
     }
 }
+@media (max-width:1399px){
+    .prime_hero .headding_h{
+        margin-top: 50px;
+    }
+}
 /* section-2 end  */
 
 /* section-3 start  */
@@ -240,16 +248,17 @@ buttons
     background-repeat: no-repeat;
     background-position: top left, right bottom;
     background-size: 70px;
+    border: 3px solid #EFF1FF;
 }
 .prime_weare img{
-    border-radius: 10px 130px 130px 0px;
+    border-radius: 10px 130px 130px 10px;
 }
 .prime_weare .headding_h{
     color: var(--primary-color);
 }
 .prime_weare .headding_text span{
     color: var(--black-color);
-    font-weight: 500;
+    font-weight: 600;
 }
 @media (max-width:992px){
     .prime_weare img{
@@ -257,7 +266,7 @@ buttons
         margin-top: 20px;
     }
     .prime_weare{
-        padding: 50px 0px 50px 0px;
+        padding: 00px 0px 50px 0px;
     }
 }
 /* section-3 end  */
@@ -280,30 +289,36 @@ buttons
     font-weight: 700;
     font-size: 66px;
     line-height: 60px;
-    letter-spacing: -0.04em;
     color: #3441AE;
     flex: none;
     order: 0;
     flex-grow: 0;
+    margin-bottom: 0px;
 }
 .service_text{
     font-style: normal;
     font-weight: 700;
     font-size: 23px;
     line-height: 29px;
-    letter-spacing: -0.04em;
     color: #FFFFFF;
     flex: none;
     order: 1;
     flex-grow: 0;
+    margin-bottom: 0px;
+}
+.services_name{
+    height: 50px;
+    /* border: 1px solid red; */
+    gap: 16px;
+    margin-bottom: 16px;
 }
 @media (max-width:576px){
     .service_number{
-        font-size: 25px;
+        font-size: 46px;
         line-height: 30px;
     }
     .service_text{
-        font-size: 14px;
+        font-size: 16px;
         line-height: 20px;
     }
 }
@@ -312,9 +327,20 @@ buttons
         padding: 50px 0px 50px 0px;
         border-radius: 50px 50px 0px 0px;
     }
+    .prime_service .headding_text{
+        margin-bottom: 40px;
+    }
+    .services_name{
+        height: 50px;
+        /* border: 1px solid red; */
+        gap: 7px;
+        margin-bottom: 14px;
+    }
 
 }
 /* section-4 end  */
+
+
 
 /* section-5 start  */
 .prime_Project{
@@ -328,18 +354,23 @@ buttons
     color: var(--primary-color);
 }
 .prime_Project .nav-pills{
-    background-color: var(--primary-color);
+    /* background-color: var(--primary-color); */
     padding: 8px 0px 8px 0px;
 }
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-    color: var(--primary-color) !important;
-    background-color: var(--white-color) !important;
+    color: var(--white-color) !important;
+    background-color: var(--primary-color) !important;
+    box-shadow: 0px 7px 10px 0px #212D9266 !important; 
+}
+.prime_Project .nav-pills .nav-item{
+    border: 1px solid var(--primary-color);
 }
 .prime_Project .nav-pills .nav-link {
     background: 0 0;
     border: 0;
     border-radius: 0px !important;
     font-weight: 500 !important;
+    color: var(--primary-color);
 }
 .prime_Project .nav{
     flex-wrap: nowrap !important;

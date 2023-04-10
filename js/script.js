@@ -39,3 +39,13 @@ btn.on('click', function(e) {
   $('html, body').animate({scrollTop:0}, '300');
 });
 // scroll button 
+
+// navbar toggle script 
+$(function(){ 
+  var navMain = $(".navbar-collapse");
+
+  navMain.on("click", "a", null, function () {
+      navMain.collapse('hide');
+  });
+});
+// navbar toggle script 
