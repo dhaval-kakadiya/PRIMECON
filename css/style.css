@@ -438,7 +438,7 @@ buttons
     backdrop-filter: blur(20px);
     border: 1px solid #C8D3E8;
     border-radius: 16px;
-    box-shadow: 0px 16px 8px -4px #13174653;
+    /* box-shadow: 0px 16px 8px -4px #13174653; */
     position: relative;
     top: 130px;
 }
