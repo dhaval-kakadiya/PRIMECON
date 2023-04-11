@@ -90,6 +90,7 @@ buttons
     border: 2px solid var(--primary-color);
     padding: 10px 20px 10px 20px;
     background-color: var(--primary-color);
+    border-radius: 10px;
     transition: 1s;
     display: flex;
     align-items: center;
@@ -159,6 +160,7 @@ buttons
 }
 .navbar_btn{
     background-color: transparent;
+    border-radius: 10px;
     border: 1px solid var(--white-color);
     transition: 1s;
 }
@@ -312,6 +314,9 @@ buttons
     gap: 16px;
     margin-bottom: 16px;
 }
+.imgborder {
+    border-radius: 16px;
+}
 @media (max-width:576px){
     .service_number{
         font-size: 46px;
@@ -362,16 +367,19 @@ buttons
 }
 .prime_Project .nav-pills .nav-item{
     border: 1px solid var(--primary-color);
+    
 }
 .prime_Project .nav-pills .nav-link {
     background: 0 0;
-    border: 0;
     border-radius: 0px !important;
     font-weight: 500 !important;
     color: var(--primary-color);
 }
 .prime_Project .nav{
     flex-wrap: nowrap !important;
+}
+.proimgborder {
+    border-radius: 10px;
 }
 @media (max-width:768px){
     .prime_Project .nav-pills .nav-link {
@@ -397,12 +405,14 @@ buttons
     color: var(--primary-color);
 }
 .choosus_cards{
-    background-color: var(--primary-color);
+    /* background-color: var(--primary-color); */
 }
 .choosus_cards div{
-    background-color: #E9F1FF;
+    background-color: #c8d4ea95;
     padding: 18px;
     width: 31%;
+    border: 1px solid #C8D3E8;
+    border-radius: 16px;
 }
 .choos_hedding{
     font-style: normal;
@@ -424,8 +434,9 @@ buttons
 .form{
     background-color: #c8d4ea95;
     padding: 30px 30px 0px 30px !important;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
     border: 1px solid #C8D3E8;
+    border-radius: 16px;
     position: relative;
     top: 130px;
 }
@@ -437,7 +448,7 @@ buttons
     box-shadow: none !important;
 }
 .form-control{
-    border-radius: 0px !important;
+    border-radius: 10px !important;
     background-color: #E9F1FF;
     border-color: #E9F1FF;
 }
