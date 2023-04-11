@@ -413,6 +413,7 @@ buttons
     width: 31%;
     border: 1px solid #C8D3E8;
     border-radius: 16px;
+    /* box-shadow: 0px 4px 10px 0px #494d8628; */
 }
 .choos_hedding{
     font-style: normal;
@@ -437,6 +438,7 @@ buttons
     backdrop-filter: blur(20px);
     border: 1px solid #C8D3E8;
     border-radius: 16px;
+    box-shadow: 0px 16px 8px -4px #13174653;
     position: relative;
     top: 130px;
 }
