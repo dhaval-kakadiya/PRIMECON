@@ -296,7 +296,7 @@ const LandingPage = (props) => {
                   Renovations
                 </p>
               </div>
-              <img src={service1} alt="" width="100%" />
+              <img class="imgborder" src={service1} alt="" width="100%" />
             </div>
             <div class="col" data-aos="fade-up" data-aos-duration="1000">
               <div class="d-flex align-items-center align-items-md-start services_name">
@@ -306,21 +306,21 @@ const LandingPage = (props) => {
                   Renovations
                 </p>
               </div>
-              <img src={service2} alt="" width="100%" />
+              <img class="imgborder" src={service2} alt="" width="100%" />
             </div>
             <div class="col" data-aos="fade-up" data-aos-duration="1000">
               <div class="d-flex align-items-center align-items-md-start services_name">
                 <h2 class="service_number">03</h2>
                 <p class="service_text col-7">Basement</p>
               </div>
-              <img src={service3} alt="" width="100%" />
+              <img class="imgborder" src={service3} alt="" width="100%" />
             </div>
             <div class="col" data-aos="fade-up" data-aos-duration="1000">
               <div class="d-flex align-items-center align-items-md-start services_name">
                 <h2 class="service_number">04</h2>
                 <p class="service_text col-7">Flooring</p>
               </div>
-              <img src={service4} alt="" width="100%" />
+              <img class="imgborder" src={service4} alt="" width="100%" />
             </div>
             <div class="col" data-aos="fade-up" data-aos-duration="1000">
               <div class="d-flex align-items-center align-items-md-start services_name">
@@ -330,7 +330,7 @@ const LandingPage = (props) => {
                   Fences
                 </p>
               </div>
-              <img src={service5} alt="" width="100%" />
+              <img class="imgborder" src={service5} alt="" width="100%" />
             </div>
             <div class="col" data-aos="fade-up" data-aos-duration="1000">
               <div class="d-flex align-items-center align-items-md-start services_name">
@@ -340,7 +340,7 @@ const LandingPage = (props) => {
                   Services
                 </p>
               </div>
-              <img src={service6} alt="" width="100%" />
+              <img class="imgborder" src={service6} alt="" width="100%" />
             </div>
           </div>
         </div>
@@ -402,43 +402,43 @@ const LandingPage = (props) => {
               <div class="row row-cols-2 row-cols-md-3 g-4 justify-content-center harsh">
                 <div class="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img src={res1} alt="" width="100%" />
+                  <img class="proimgborder" src={res1} alt="" width="100%" />
                 </div>
                 <div class="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img src={res2} alt="" width="100%" />
+                  <img class="proimgborder" src={res2} alt="" width="100%" />
                 </div>
                 <div class="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img src={res3} alt="" width="100%" />
+                  <img class="proimgborder" src={res3} alt="" width="100%" />
                 </div>
                 <div class="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img src={res4} alt="" width="100%" />
+                  <img class="proimgborder" src={res4} alt="" width="100%" />
                 </div>
                 <div class="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img src={res5} alt="" width="100%" />
+                  <img class="proimgborder" src={res5} alt="" width="100%" />
                 </div>
                 <div class="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img src={res1} alt="" width="100%" />
+                  <img class="proimgborder" src={res1} alt="" width="100%" />
                 </div>
                 <div class="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img src={res2} alt="" width="100%" />
+                  <img class="proimgborder" src={res2} alt="" width="100%" />
                 </div>
                 <div class="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img src={res3} alt="" width="100%" />
+                  <img class="proimgborder" src={res3} alt="" width="100%" />
                 </div>
                 <div class="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img src={res4} alt="" width="100%" />
+                  <img class="proimgborder" src={res4} alt="" width="100%" />
                 </div>
                 <div class="col d-block d-md-none" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img src={res5} alt="" width="100%" />
+                  <img class="proimgborder" src={res5} alt="" width="100%" />
                 </div>
               </div>
             </div>
@@ -451,43 +451,43 @@ const LandingPage = (props) => {
               <div class="row row-cols-2 row-cols-md-3 g-4 justify-content-center">
                 <div class="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img src={comm1} alt="" width="100%" />
+                  <img class="proimgborder" src={comm1} alt="" width="100%" />
                 </div>
                 <div class="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img src={comm2} alt="" width="100%" />
+                  <img class="proimgborder" src={comm2} alt="" width="100%" />
                 </div>
                 <div class="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img src={comm3} alt="" width="100%" />
+                  <img class="proimgborder" src={comm3} alt="" width="100%" />
                 </div>
                 <div class="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img src={comm4} alt="" width="100%" />
+                  <img class="proimgborder" src={comm4} alt="" width="100%" />
                 </div>
                 <div class="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img src={comm5} alt="" width="100%" />
+                  <img class="proimgborder" src={comm5} alt="" width="100%" />
                 </div>
                 <div class="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img src={comm6} alt="" width="100%" />
+                  <img class="proimgborder" src={comm6} alt="" width="100%" />
                 </div>
                 <div class="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img src={comm7} alt="" width="100%" />
+                  <img class="proimgborder" src={comm7} alt="" width="100%" />
                 </div>
                 <div class="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img src={comm8} alt="" width="100%" />
+                  <img class="proimgborder" src={comm8} alt="" width="100%" />
                 </div>
                 <div class="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img src={comm9} alt="" width="100%" />
+                  <img class="proimgborder" src={comm9} alt="" width="100%" />
                 </div>
                 <div class="col d-block d-md-none" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img src={comm1} alt="" width="100%" />
+                  <img class="proimgborder" src={comm1} alt="" width="100%" />
                 </div>
               </div>
             </div>
@@ -514,7 +514,7 @@ const LandingPage = (props) => {
               data-aos="fade-up"
               data-aos-duration="1000"
             >
-              <img src={Satisfaction} alt="" width="30%" />
+              <img src={Hat} alt="" width="30%" />
 
               <h3 class="choos_hedding">Experience & Expertise</h3>
               <p class="choos_text">
@@ -540,7 +540,7 @@ const LandingPage = (props) => {
               data-aos="fade-up"
               data-aos-duration="1000"
             >
-              <img src={Hat} alt="" width="30%" />
+              <img src={Satisfaction} alt="" width="30%" />
 
               <h3 class="choos_hedding">Customer Satisfaction</h3>
               <p class="choos_text">
