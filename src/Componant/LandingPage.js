@@ -556,7 +556,7 @@ const LandingPage = (props) => {
             <div class="col-12 col-lg-6 text-center text-lg-start">
               <h3 class="form_first_headding">HAVE A PROJECT ?</h3>
               <h2 class="headding_h">Let’s Work Together </h2>
-              <p class="headding_text pe-5">
+              <p class="headding_text p-0 pe-lg-5">
                 At Prime-Con, we understand that every project is unique, and we
                 tailor our approach to meet our clients' specific needs. We work
                 closely with our clients to develop a project plan that takes

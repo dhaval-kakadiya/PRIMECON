@@ -60,7 +60,13 @@ scrollbar button
   opacity: 1;
   visibility: visible;
 }
-
+@media (max-width:768PX){
+  #buttonnn:hover {
+    cursor: pointer;
+    background-color: #c8d4ea95;
+    border: 1px solid var(--primary-color);
+  }
+}
 /* ==================
 scrollbar button
 ================== */
@@ -120,6 +126,15 @@ buttons
 }
 .buttons:hover a{
   color: var(--primary-color) !important;
+}
+@media (max-width:768px){
+  .buttons:hover{
+    border: 2px solid var(--primary-color);
+    background-color: var(--primary-color);
+  }
+  .buttons:hover a{
+    color: var(--white-color) !important;
+  }
 }
 @media (max-width:992px){
   .buttons{
@@ -196,6 +211,11 @@ top: -80px;
 .navbar-toggler-icon i{
   font-size: 22px;
   margin-top: 5px;
+}
+@media (max-width:768px){
+  .navbar .navbar-collapse .navbar-nav .nav-item .nav-link:hover{
+    border-bottom: 0px solid transparent !important;
+  }
 }
 @media (max-width:992px){
   .navbar_btn{
