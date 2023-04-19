@@ -35,10 +35,13 @@ import { ToastContainer, ToastHeader } from "react-bootstrap";
 import { toast } from "react-toastify";
 import Image from "../image/Primecon Logo.png";
 import { useSelector } from "react-redux";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const LandingPage = (props) => {
-  console.log(props);
+  // console.log(props);
   const dispatch = useDispatch();
+  const [showTopBtn, setShowTopBtn] = useState(false);
   const [inputChangeValue, setinputChangeValue] = useState({
     name: "",
     email: "",
@@ -57,7 +60,28 @@ const LandingPage = (props) => {
     nofile: false,
   });
 
-  console.log(props.AddformAction);
+  useEffect(() => {
+    AOS.init();
+  }, [])
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        setShowTopBtn(true);
+      } else {
+        setShowTopBtn(false);
+      }
+    });
+  }, []);
+
+  const goToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  // console.log(props.AddformAction);
 
   // useEffect(() => {
   //   if (props.AddformReducer?.success) {
@@ -172,42 +196,42 @@ const LandingPage = (props) => {
     //   }));
     // }
 
-    e.preventDefault();
     if (
       inputChangeValue.name !== "" &&
       inputChangeValue.email !== "" &&
       inputChangeValue.number !== "" &&
       inputChangeValue.pinCode !== ""
     ) {
-      dispatch(
-        AddformAction({
-          name: inputChangeValue.name,
-          email: inputChangeValue.email,
-          number: inputChangeValue.number,
-          pinCode: inputChangeValue.pinCode,
-          message: inputChangeValue.message,
-        })
-      );
+      console.log('181', inputChangeValue)
+      // dispatch(
+      //   AddformAction({
+      //     name: inputChangeValue.name,
+      //     email: inputChangeValue.email,
+      //     number: inputChangeValue.number,
+      //     pinCode: inputChangeValue.pinCode,
+      //     message: inputChangeValue.message,
+      //   })
+      // );
     }
   };
 
   return (
     <div>
-          <a id="buttonnn"><i class="fa-solid fa-chevron-up"></i></a>
+      {/* <span id="buttonnn"><i className="text-dark fa-solid fa-chevron-up"></i></span> */}
 
-      <section class="prime_hero" id="home">
-        <div class="container-fluid p-lg-0">
-          <div class="d-lg-flex align-items-center">
+      <section className="prime_hero" id="home">
+        <div className="container-fluid p-lg-0">
+          <div className="d-lg-flex align-items-center">
             <div
-              class="col-12 col-lg-6"
+              className="col-12 col-lg-6"
               data-aos="fade-right"
               data-aos-duration="1000"
             >
-              <div class="col-12 col-lg-9 m-auto text-center text-lg-start">
-                <h1 class="headding_h">
+              <div className="col-12 col-lg-9 m-auto text-center text-lg-start">
+                <h1 className="headding_h">
                   <span>QUALITY</span> & <span>TIME</span> MATTERS !
                 </h1>
-                <p class="headding_text">
+                <p className="headding_text">
                   As a residential and commercial general contractor, we
                   specialize in managing construction projects from start to
                   finish. We have the expertise and experience to handle a wide
@@ -215,15 +239,15 @@ const LandingPage = (props) => {
                   with clients to ensure that their vision for their project is
                   realized, while also staying within budget and on schedule.
                 </p>
-                <button class="buttons">
+                <button className="buttons">
                   <a href="tel:+15195741080">
-                    <i class="fa-solid fa-phone"></i> Contact Now
+                    <i className="fa-solid fa-phone"></i> Contact Now
                   </a>
                 </button>
               </div>
             </div>
             <div
-              class="col-12 col-lg-6"
+              className="col-12 col-lg-6"
               data-aos="fade-left"
               data-aos-duration="1000"
             >
@@ -233,27 +257,36 @@ const LandingPage = (props) => {
         </div>
       </section>
 
-      <section class="prime_weare" id="whoweare">
-        <div class="container">
-          <div class="flex-wrap d-flex align-items-center">
+      <section className="prime_weare" id="whoweare">
+        <div className="container">
+
+          {showTopBtn && (
+            <span id="buttonnn" onClick={goToTop} className="buttons"
+              data-aos="fade-left"
+              data-aos-duration="1000">
+              <i className="fw-bold fa-solid fa-chevron-up"></i>
+            </span>
+          )}
+
+          <div className="flex-wrap d-flex align-items-center">
             <div
-              class="col-12 col-lg-6 order-last order-lg-first"
+              className="col-12 col-lg-6 order-last order-lg-first"
               data-aos="fade-up"
               data-aos-duration="2000"
             >
               <img src={whoWeAre} alt="" width="100%" />
             </div>
-            <div class="col-12 col-lg-6 text-center text-lg-start order-first order-lg-last">
-              <div class="ms-0 ms-lg-5">
+            <div className="col-12 col-lg-6 text-center text-lg-start order-first order-lg-last">
+              <div className="ms-0 ms-lg-5">
                 <h2
-                  class="headding_h"
+                  className="headding_h"
                   data-aos="fade-left"
                   data-aos-duration="100"
                 >
                   Who We Are
                 </h2>
                 <p
-                  class="headding_text"
+                  className="headding_text"
                   data-aos="fade-left"
                   data-aos-duration="1000"
                 >
@@ -262,7 +295,7 @@ const LandingPage = (props) => {
                   of experienced professionals
                 </p>
                 <button
-                  class="buttons"
+                  className="buttons"
                   data-aos="fade-left"
                   data-aos-duration="1000"
                 >
@@ -274,98 +307,98 @@ const LandingPage = (props) => {
         </div>
       </section>
 
-      <section class="prime_service" id="service">
-        <div class="container">
+      <section className="prime_service" id="service">
+        <div className="container">
           <div
-            class="text-center"
+            className="text-center"
             data-aos="fade-down"
             data-aos-duration="1000"
           >
-            <h2 class="headding_h">Our Services</h2>
-            <p class="headding_text">
+            <h2 className="headding_h">Our Services</h2>
+            <p className="headding_text">
               We Specialize In The Types Of Renovations That Add The Most Value
               To Your Home
             </p>
           </div>
-          <div class="row row-cols-2 row-cols-md-3 g-4 justify-content-center">
-            <div class="col" data-aos="fade-up" data-aos-duration="1000">
-              <div class="d-flex align-items-center align-items-md-start services_name">
-                <h2 class="service_number">01</h2>
-                <p class="service_text col-7">
+          <div className="row row-cols-2 row-cols-md-3 g-4 justify-content-center">
+            <div className="col" data-aos="fade-up" data-aos-duration="1000">
+              <div className="d-flex align-items-center align-items-md-start services_name">
+                <h2 className="service_number">01</h2>
+                <p className="service_text col-7">
                   Kitchen <br />
                   Renovations
                 </p>
               </div>
-              <img class="imgborder" src={service1} alt="" width="100%" />
+              <img className="imgborder" src={service1} alt="" width="100%" />
             </div>
-            <div class="col" data-aos="fade-up" data-aos-duration="1000">
-              <div class="d-flex align-items-center align-items-md-start services_name">
-                <h2 class="service_number">02</h2>
-                <p class="service_text col-7">
+            <div className="col" data-aos="fade-up" data-aos-duration="1000">
+              <div className="d-flex align-items-center align-items-md-start services_name">
+                <h2 className="service_number">02</h2>
+                <p className="service_text col-7">
                   Bathroom <br />
                   Renovations
                 </p>
               </div>
-              <img class="imgborder" src={service2} alt="" width="100%" />
+              <img className="imgborder" src={service2} alt="" width="100%" />
             </div>
-            <div class="col" data-aos="fade-up" data-aos-duration="1000">
-              <div class="d-flex align-items-center align-items-md-start services_name">
-                <h2 class="service_number">03</h2>
-                <p class="service_text col-7">Basement</p>
+            <div className="col" data-aos="fade-up" data-aos-duration="1000">
+              <div className="d-flex align-items-center align-items-md-start services_name">
+                <h2 className="service_number">03</h2>
+                <p className="service_text col-7">Basement</p>
               </div>
-              <img class="imgborder" src={service3} alt="" width="100%" />
+              <img className="imgborder" src={service3} alt="" width="100%" />
             </div>
-            <div class="col" data-aos="fade-up" data-aos-duration="1000">
-              <div class="d-flex align-items-center align-items-md-start services_name">
-                <h2 class="service_number">04</h2>
-                <p class="service_text col-7">Flooring</p>
+            <div className="col" data-aos="fade-up" data-aos-duration="1000">
+              <div className="d-flex align-items-center align-items-md-start services_name">
+                <h2 className="service_number">04</h2>
+                <p className="service_text col-7">Flooring</p>
               </div>
-              <img class="imgborder" src={service4} alt="" width="100%" />
+              <img className="imgborder" src={service4} alt="" width="100%" />
             </div>
-            <div class="col" data-aos="fade-up" data-aos-duration="1000">
-              <div class="d-flex align-items-center align-items-md-start services_name">
-                <h2 class="service_number">05</h2>
-                <p class="service_text col-7">
+            <div className="col" data-aos="fade-up" data-aos-duration="1000">
+              <div className="d-flex align-items-center align-items-md-start services_name">
+                <h2 className="service_number">05</h2>
+                <p className="service_text col-7">
                   Decks & <br />
                   Fences
                 </p>
               </div>
-              <img class="imgborder" src={service5} alt="" width="100%" />
+              <img className="imgborder" src={service5} alt="" width="100%" />
             </div>
-            <div class="col" data-aos="fade-up" data-aos-duration="1000">
-              <div class="d-flex align-items-center align-items-md-start services_name">
-                <h2 class="service_number">06</h2>
-                <p class="service_text col-7">
+            <div className="col" data-aos="fade-up" data-aos-duration="1000">
+              <div className="d-flex align-items-center align-items-md-start services_name">
+                <h2 className="service_number">06</h2>
+                <p className="service_text col-7">
                   Electrical <br />
                   Services
                 </p>
               </div>
-              <img class="imgborder" src={service6} alt="" width="100%" />
+              <img className="imgborder" src={service6} alt="" width="100%" />
             </div>
           </div>
         </div>
       </section>
 
-      <section class="prime_Project" id="projects">
-        <div class="container">
+      <section className="prime_Project" id="projects">
+        <div className="container">
           <div
-            class="text-center"
+            className="text-center"
             data-aos="fade-down"
             data-aos-duration="1000"
           >
-            <h2 class="headding_h">Featured Projects</h2>
-            <p class="headding_text">
+            <h2 className="headding_h">Featured Projects</h2>
+            <p className="headding_text">
               Take A Look At What Our Clients Have Achieved With Us
             </p>
           </div>
           <ul
-            class="nav nav-pills mt-5 mb-3 justify-content-center  m-auto col-2"
+            className="nav nav-pills mt-5 mb-3 justify-content-center  m-auto col-2"
             id="pills-tab"
             role="tablist"
           >
-            <li class="nav-item" role="presentation" data-aos="fade-right">
+            <li className="nav-item" role="presentation" data-aos="fade-right">
               <button
-                class="nav-link active"
+                className="nav-link active"
                 id="pills-home-tab"
                 data-bs-toggle="pill"
                 data-bs-target="#pills-home"
@@ -377,9 +410,9 @@ const LandingPage = (props) => {
                 Residential
               </button>
             </li>
-            <li class="nav-item" role="presentation" data-aos="fade-left">
+            <li className="nav-item" role="presentation" data-aos="fade-left">
               <button
-                class="nav-link"
+                className="nav-link"
                 id="pills-profile-tab"
                 data-bs-toggle="pill"
                 data-bs-target="#pills-profile"
@@ -392,102 +425,102 @@ const LandingPage = (props) => {
               </button>
             </li>
           </ul>
-          <div class="tab-content text-center" id="pills-tabContent">
+          <div className="tab-content text-center" id="pills-tabContent">
             <div
-              class="tab-pane fade show active"
+              className="tab-pane fade show active"
               id="pills-home"
               role="tabpanel"
               aria-labelledby="pills-home-tab"
             >
-              <div class="row row-cols-2 row-cols-md-3 g-4 justify-content-center harsh">
-                <div class="col" data-aos="fade-up" data-aos-duration="1000">
+              <div className="row row-cols-2 row-cols-md-3 g-4 justify-content-center harsh">
+                <div className="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img class="proimgborder" src={res1} alt="" width="100%" />
+                  <img className="proimgborder" src={res1} alt="" width="100%" />
                 </div>
-                <div class="col" data-aos="fade-up" data-aos-duration="1000">
+                <div className="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img class="proimgborder" src={res2} alt="" width="100%" />
+                  <img className="proimgborder" src={res2} alt="" width="100%" />
                 </div>
-                <div class="col" data-aos="fade-up" data-aos-duration="1000">
+                <div className="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img class="proimgborder" src={res3} alt="" width="100%" />
+                  <img className="proimgborder" src={res3} alt="" width="100%" />
                 </div>
-                <div class="col" data-aos="fade-up" data-aos-duration="1000">
+                <div className="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img class="proimgborder" src={res4} alt="" width="100%" />
+                  <img className="proimgborder" src={res4} alt="" width="100%" />
                 </div>
-                <div class="col" data-aos="fade-up" data-aos-duration="1000">
+                <div className="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img class="proimgborder" src={res5} alt="" width="100%" />
+                  <img className="proimgborder" src={res5} alt="" width="100%" />
                 </div>
-                <div class="col" data-aos="fade-up" data-aos-duration="1000">
+                <div className="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img class="proimgborder" src={res1} alt="" width="100%" />
+                  <img className="proimgborder" src={res1} alt="" width="100%" />
                 </div>
-                <div class="col" data-aos="fade-up" data-aos-duration="1000">
+                <div className="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img class="proimgborder" src={res2} alt="" width="100%" />
+                  <img className="proimgborder" src={res2} alt="" width="100%" />
                 </div>
-                <div class="col" data-aos="fade-up" data-aos-duration="1000">
+                <div className="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img class="proimgborder" src={res3} alt="" width="100%" />
+                  <img className="proimgborder" src={res3} alt="" width="100%" />
                 </div>
-                <div class="col" data-aos="fade-up" data-aos-duration="1000">
+                <div className="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img class="proimgborder" src={res4} alt="" width="100%" />
+                  <img className="proimgborder" src={res4} alt="" width="100%" />
                 </div>
-                <div class="col d-block d-md-none" data-aos="fade-up" data-aos-duration="1000">
+                <div className="col d-block d-md-none" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img class="proimgborder" src={res5} alt="" width="100%" />
+                  <img className="proimgborder" src={res5} alt="" width="100%" />
                 </div>
               </div>
             </div>
             <div
-              class="tab-pane fade"
+              className="tab-pane fade"
               id="pills-profile"
               role="tabpanel"
               aria-labelledby="pills-profile-tab"
             >
-              <div class="row row-cols-2 row-cols-md-3 g-4 justify-content-center">
-                <div class="col" data-aos="fade-up" data-aos-duration="1000">
+              <div className="row row-cols-2 row-cols-md-3 g-4 justify-content-center">
+                <div className="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img class="proimgborder" src={comm1} alt="" width="100%" />
+                  <img className="proimgborder" src={comm1} alt="" width="100%" />
                 </div>
-                <div class="col" data-aos="fade-up" data-aos-duration="1000">
+                <div className="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img class="proimgborder" src={comm2} alt="" width="100%" />
+                  <img className="proimgborder" src={comm2} alt="" width="100%" />
                 </div>
-                <div class="col" data-aos="fade-up" data-aos-duration="1000">
+                <div className="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img class="proimgborder" src={comm3} alt="" width="100%" />
+                  <img className="proimgborder" src={comm3} alt="" width="100%" />
                 </div>
-                <div class="col" data-aos="fade-up" data-aos-duration="1000">
+                <div className="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img class="proimgborder" src={comm4} alt="" width="100%" />
+                  <img className="proimgborder" src={comm4} alt="" width="100%" />
                 </div>
-                <div class="col" data-aos="fade-up" data-aos-duration="1000">
+                <div className="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img class="proimgborder" src={comm5} alt="" width="100%" />
+                  <img className="proimgborder" src={comm5} alt="" width="100%" />
                 </div>
-                <div class="col" data-aos="fade-up" data-aos-duration="1000">
+                <div className="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img class="proimgborder" src={comm6} alt="" width="100%" />
+                  <img className="proimgborder" src={comm6} alt="" width="100%" />
                 </div>
-                <div class="col" data-aos="fade-up" data-aos-duration="1000">
+                <div className="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img class="proimgborder" src={comm7} alt="" width="100%" />
+                  <img className="proimgborder" src={comm7} alt="" width="100%" />
                 </div>
-                <div class="col" data-aos="fade-up" data-aos-duration="1000">
+                <div className="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img class="proimgborder" src={comm8} alt="" width="100%" />
+                  <img className="proimgborder" src={comm8} alt="" width="100%" />
                 </div>
-                <div class="col" data-aos="fade-up" data-aos-duration="1000">
+                <div className="col" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img class="proimgborder" src={comm9} alt="" width="100%" />
+                  <img className="proimgborder" src={comm9} alt="" width="100%" />
                 </div>
-                <div class="col d-block d-md-none" data-aos="fade-up" data-aos-duration="1000">
+                <div className="col d-block d-md-none" data-aos="fade-up" data-aos-duration="1000">
                   {" "}
-                  <img class="proimgborder" src={comm1} alt="" width="100%" />
+                  <img className="proimgborder" src={comm1} alt="" width="100%" />
                 </div>
               </div>
             </div>
@@ -495,68 +528,68 @@ const LandingPage = (props) => {
         </div>
       </section>
 
-      <section class="prime_choosus" id="whychooseus">
-        <div class="container">
+      <section className="prime_choosus" id="whychooseus">
+        <div className="container">
           <div
-            class="text-center"
+            className="text-center"
             data-aos="fade-down"
             data-aos-duration="1000"
           >
-            <h2 class="headding_h">Why Choose Us ?</h2>
-            <p class="headding_text">
+            <h2 className="headding_h">Why Choose Us ?</h2>
+            <p className="headding_text">
               Experience the difference of a team committed to quality and
               precision
             </p>
           </div>
-          <div class="d-md-flex justify-content-around col-12 col-md-10 p-0 m-auto choosus_cards">
+          <div className="d-md-flex justify-content-around col-12 col-md-10 p-0 m-auto choosus_cards">
             <div
-              class="text-center mb-3 mb-md-0"
+              className="text-center mb-3 mb-md-0"
               data-aos="fade-up"
               data-aos-duration="1000"
             >
               <img src={Hat} alt="" width="30%" />
 
-              <h3 class="choos_hedding">Experience & Expertise</h3>
-              <p class="choos_text">
+              <h3 className="choos_hedding">Experience & Expertise</h3>
+              <p className="choos_text">
                 We use our experience and expertise to deliver high-quality work
                 that meets our clients' needs and exceeds their expectations.
               </p>
             </div>
             <div
-              class="text-center mb-3 mb-md-0"
+              className="text-center mb-3 mb-md-0"
               data-aos="fade-up"
               data-aos-duration="1000"
             >
               <img src={Quality} alt="" width="30%" />
 
-              <h3 class="choos_hedding">Quality and Reliability</h3>
-              <p class="choos_text">
+              <h3 className="choos_hedding">Quality and Reliability</h3>
+              <p className="choos_text">
                 We prioritize quality and reliability by utilizing the best
                 materials and techniques for dependable and lasting results.
               </p>
             </div>
             <div
-              class="text-center"
+              className="text-center"
               data-aos="fade-up"
               data-aos-duration="1000"
             >
               <img src={Satisfaction} alt="" width="30%" />
 
-              <h3 class="choos_hedding">Customer Satisfaction</h3>
-              <p class="choos_text">
+              <h3 className="choos_hedding">Customer Satisfaction</h3>
+              <p className="choos_text">
                 We prioritize customer satisfaction by listening to our clients'
                 needs and delivering exceptional results.
               </p>
             </div>
           </div>
           <div
-            class="d-lg-flex justify-content-around gap-3 col-12 col-md-10 m-auto form"
+            className="d-lg-flex justify-content-around gap-3 col-12 col-md-10 m-auto form"
             id="contactus"
           >
-            <div class="col-12 col-lg-6 text-center text-lg-start">
-              <h3 class="form_first_headding">HAVE A PROJECT ?</h3>
-              <h2 class="headding_h">Let’s Work Together </h2>
-              <p class="headding_text p-0 pe-lg-5">
+            <div className="col-12 col-lg-6 text-center text-lg-start">
+              <h3 className="form_first_headding">HAVE A PROJECT ?</h3>
+              <h2 className="headding_h">Let’s Work Together </h2>
+              <p className="headding_text p-0 pe-lg-5">
                 At Prime-Con, we understand that every project is unique, and we
                 tailor our approach to meet our clients' specific needs. We work
                 closely with our clients to develop a project plan that takes
@@ -566,8 +599,8 @@ const LandingPage = (props) => {
                 expectations.
               </p>
             </div>
-            <div class="col-12 col-lg-6">
-              <h2 class="form_headding text-center text-lg-start">
+            <div className="col-12 col-lg-6">
+              <h2 className="form_headding text-center text-lg-start">
                 Get In Touch
               </h2>
               <form
@@ -652,18 +685,18 @@ const LandingPage = (props) => {
                   )}
                 </div>
                 <div className="col-md-6">
-                  <input 
-                  name="nofile"
-                  class="form-control form-control-lg file_choose_fild" 
-                  id="formFileLg"
-                  onChange={onInputChange}
-                  type="file" />
+                  <input
+                    name="nofile"
+                    className="form-control form-control-lg file_choose_fild"
+                    id="formFileLg"
+                    onChange={onInputChange}
+                    type="file" />
                   {error.message && (
                     <>
                       <span className="text-danger">{error.nofile}</span>
                     </>
                   )}
-                </div>    
+                </div>
                 <div className="col-12">
                   <button
                     className="buttons"
@@ -679,33 +712,33 @@ const LandingPage = (props) => {
         </div>
       </section>
 
-      <section class="prime_footer">
-        <div class="container text-center text-lg-start">
-          <div class="flex-wrap d-flex">
-            <div class="col-12 col-lg-4">
+      <section className="prime_footer">
+        <div className="container text-center text-lg-start">
+          <div className="flex-wrap d-flex">
+            <div className="col-12 col-lg-4">
               <img src={Image} alt="" width="50%" />
 
               <ul>
                 <li>
                   <a href="tel:+15195741080">
-                    <i class="fa-solid fa-phone p-2"></i> +1 519 574 1080
+                    <i className="fa-solid fa-phone p-2"></i> +1 519 574 1080
                   </a>
                 </li>
                 <li>
                   <a href="mailto:Contact@primecon.ca">
-                    <i class="fa-solid fa-envelope p-2"></i> Contact@primecon.ca
+                    <i className="fa-solid fa-envelope p-2"></i> Contact@primecon.ca
                   </a>
                 </li>
                 <li>
                   <a href="https://goo.gl/maps/3vNcTiWrZDtk2jZt5">
-                    <i class="fa-solid fa-location-dot p-2"></i> Etobicoke,
+                    <i className="fa-solid fa-location-dot p-2"></i> Etobicoke,
                     Toronto, Ontario.
                   </a>
                 </li>
               </ul>
             </div>
-            <div class="col-12 col-lg-4">
-              <h2 class="footer_headding">Navigations</h2>
+            <div className="col-12 col-lg-4">
+              <h2 className="footer_headding">Navigations</h2>
               <ul>
                 <li>
                   <a href="#home">Home</a>
@@ -724,28 +757,28 @@ const LandingPage = (props) => {
                 </li>
               </ul>
             </div>
-            <div class="col-12 col-lg-4">
-              <h2 class="footer_headding">Follow Us</h2>
+            <div className="col-12 col-lg-4">
+              <h2 className="footer_headding">Follow Us</h2>
               <ul>
                 {/* <li>
                   <a href="tel:+15195741080">
-                    <i class="fa-brands fa-facebook-f p-2"></i> Facebook
+                    <i className="fa-brands fa-facebook-f p-2"></i> Facebook
                   </a>
                 </li> */}
                 <li>
                   <a href="mailto:Contact@primecon.ca">
-                    <i class="fa-brands fa-instagram p-2"></i>Instagram
+                    <i className="fa-brands fa-instagram p-2"></i>Instagram
                   </a>
                 </li>
                 {/* <li>
                   <a href="https://goo.gl/maps/3vNcTiWrZDtk2jZt5">
-                    <i class="fa-brands fa-twitter p-2"></i> Twitter
+                    <i className="fa-brands fa-twitter p-2"></i> Twitter
                   </a>
                 </li> */}
               </ul>
             </div>
           </div>
-          {/* <div class="text-center copyright">
+          {/* <div className="text-center copyright">
             <p>
               © Copyright 2023{" "}
               <a href="https://www.primecon.ca/" target="_blank">
@@ -761,6 +794,8 @@ const LandingPage = (props) => {
     </div>
   );
 };
+
+// export default LandingPage
 
 const mapStateToProps = (state) => ({
   AddformReducer: state.AddformReducer,
