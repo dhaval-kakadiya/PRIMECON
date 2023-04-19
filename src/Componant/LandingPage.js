@@ -398,7 +398,7 @@ const LandingPage = (props) => {
           >
             <li className="nav-item" role="presentation" data-aos="fade-right">
               <button
-                className="nav-link active"
+                className="nav-link active frist_tab"
                 id="pills-home-tab"
                 data-bs-toggle="pill"
                 data-bs-target="#pills-home"
@@ -412,7 +412,7 @@ const LandingPage = (props) => {
             </li>
             <li className="nav-item" role="presentation" data-aos="fade-left">
               <button
-                className="nav-link"
+                className="nav-link second_tab"
                 id="pills-profile-tab"
                 data-bs-toggle="pill"
                 data-bs-target="#pills-profile"
