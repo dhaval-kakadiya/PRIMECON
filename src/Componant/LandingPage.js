@@ -261,9 +261,9 @@ const LandingPage = (props) => {
         <div className="container">
 
           {showTopBtn && (
-            <span id="buttonnn" onClick={goToTop} className="buttons"
+            <span id="buttonnn" onClick={goToTop}
               data-aos="fade-left"
-              data-aos-duration="1000">
+              data-aos-duration="5000">
               <i className="fw-bold fa-solid fa-chevron-up"></i>
             </span>
           )}

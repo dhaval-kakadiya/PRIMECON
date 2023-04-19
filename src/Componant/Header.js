@@ -1,11 +1,36 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from '../image/Primecon Logo.png'
 import '../Componant/Custome-Css/Custom.css'
-import '../js/script.js'
+// import '../js/script.js'
 // import AOS from 'aos';
 // import 'aos/dist/aos.css';
 
+function useScrollDirection() {
+  const [scrollDirection, setScrollDirection] = useState(null);
+
+  useEffect(() => {
+    let lastScrollY = window.pageYOffset;
+
+    const updateScrollDirection = () => {
+      const scrollY = window.pageYOffset;
+      const direction = scrollY > lastScrollY ? "down" : "up";
+      if (direction !== scrollDirection && (scrollY - lastScrollY > 10 || scrollY - lastScrollY < -10)) {
+        setScrollDirection(direction);
+      }
+      lastScrollY = scrollY > 0 ? scrollY : 0;
+    };
+    window.addEventListener("scroll", updateScrollDirection); // add event listener
+    return () => {
+      window.removeEventListener("scroll", updateScrollDirection); // clean up
+    }
+  }, [scrollDirection]);
+
+  return scrollDirection;
+};
+
 const Header = () => {
+
+  const scrollDirection = useScrollDirection();
 
   // useEffect(() => {
   //   AOS.init();
@@ -40,7 +65,8 @@ const Header = () => {
         </div>
       </nav> */}
 
-      <nav className="navbar navbar-expand-lg" id="nav">
+      {/* <nav className="navbar navbar-expand-lg" id="nav"> */}
+      <nav className={`sticky ${scrollDirection === "down" ? "hide" : "show"} navbar navbar-expand-lg`} id="nav">
         <div className="container">
           <a className="navbar-brand" href="#"> <img src={Image} alt="" width="60%" /></a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,7 +92,7 @@ const Header = () => {
             </ul>
           </div>
         </div>
-      </nav>
+      </nav >
     </>
   )
 }

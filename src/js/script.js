@@ -27,30 +27,30 @@ function scrollHide() {
 
 
 // scroll button 
-var btn = $('#buttonnn');
+// var btn = $('#buttonnn');
 
-$(window).scroll(function () {
-  if ($(window).scrollTop() > 300) {
-    btn.addClass('show');
-  } else {
-    btn.removeClass('show');
-  }
-});
+// $(window).scroll(function () {
+//   if ($(window).scrollTop() > 300) {
+//     btn.addClass('show');
+//   } else {
+//     btn.removeClass('show');
+//   }
+// });
 
-btn.on('click', function (e) {
-  e.preventDefault();
-  $('html, body').animate({ scrollTop: 0 }, '300');
-});
+// btn.on('click', function (e) {
+//   e.preventDefault();
+//   $('html, body').animate({ scrollTop: 0 }, '300');
+// });
 // scroll button 
 
 // navbar toggle script 
-$(function () {
-  var navMain = $(".navbar-collapse");
+// $(function () {
+//   var navMain = $(".navbar-collapse");
 
-  navMain.on("click", "a", null, function () {
-    navMain.collapse('hide');
-  });
-});
+//   navMain.on("click", "a", null, function () {
+//     navMain.collapse('hide');
+//   });
+// });
 // navbar toggle script 
 
 // aos animation script 
