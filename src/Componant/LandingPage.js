@@ -31,12 +31,13 @@ import { AddformAction } from "./Store/action/AddFormAction";
 import { connect } from "react-redux";
 import { useDispatch } from "react-redux";
 import { Toast } from "bootstrap";
-import { ToastContainer, ToastHeader } from "react-bootstrap";
+import { Form, ToastContainer, ToastHeader } from "react-bootstrap";
 import { toast } from "react-toastify";
 import Image from "../image/Primecon Logo.png";
 import { useSelector } from "react-redux";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import $ from 'jquery'
 
 const LandingPage = (props) => {
   // console.log(props);
@@ -51,14 +52,19 @@ const LandingPage = (props) => {
     nofile: "",
   });
 
-  const [error, seterror] = useState({
-    name: false,
-    email: false,
-    number: false,
-    pinCode: false,
-    message: false,
-    nofile: false,
-  });
+  const [error, setError] = useState({
+    name: '',
+    number: '',
+    email: ''
+  })
+  // const [error, seterror] = useState({
+  //   name: false,
+  //   email: false,
+  //   number: false,
+  //   pinCode: false,
+  //   message: false,
+  //   nofile: false,
+  // });
 
   useEffect(() => {
     AOS.init();
@@ -73,6 +79,18 @@ const LandingPage = (props) => {
       }
     });
   }, []);
+
+  const closeButtonJquery = () => {
+    $('#button-reset').click(function (e) {
+      var $el = $('#file-to-upload');
+      $el.wrap('<form>').closest('form').get(0).reset();
+      $el.unwrap();
+    });
+  }
+
+  useEffect(() => {
+    closeButtonJquery()
+  })
 
   const goToTop = () => {
     window.scrollTo({
@@ -95,6 +113,8 @@ const LandingPage = (props) => {
       ...preve,
       [name]: value,
     }));
+    const regex = /^[a-z0-9]@g(oogle)?mail\.com$/
+
     // console.log(inputChangeValue);
 
     //   switch (name) {
@@ -169,8 +189,47 @@ const LandingPage = (props) => {
     //   }
   };
 
+  const resetForm = () => {
+    setinputChangeValue({
+      name: "",
+      email: "",
+      number: "",
+      pinCode: "",
+      message: "",
+      nofile: "",
+    })
+  }
+
   const inputSubmit = (e) => {
     e.preventDefault();
+    const regex = /^[a-z0-9]@g(oogle)?mail\.com$/
+
+    if (!inputChangeValue.name || !inputChangeValue.number || !inputChangeValue.email) {
+      setError({
+        ...error,
+        name: "Name is Required",
+        number: "Phone is Required",
+        email: "Email is Required"
+      })
+    }
+    else {
+      console.log(inputChangeValue)
+    }
+    resetForm()
+
+    // if (!inputChangeValue.number) {
+    //   setError({
+    //     ...error,
+    //     number: "Phone is Required"
+    //   })
+    // }
+    // if (!inputChangeValue.email) {
+    //   setError({
+    //     ...error,
+    //     email: "Email is Required"
+    //   })
+    // }
+
     // if (inputChangeValue.name === "") {
     //   seterror((preve) => ({
     //     ...preve,
@@ -196,23 +255,23 @@ const LandingPage = (props) => {
     //   }));
     // }
 
-    if (
-      inputChangeValue.name !== "" &&
-      inputChangeValue.email !== "" &&
-      inputChangeValue.number !== "" &&
-      inputChangeValue.pinCode !== ""
-    ) {
-      console.log('181', inputChangeValue)
-      // dispatch(
-      //   AddformAction({
-      //     name: inputChangeValue.name,
-      //     email: inputChangeValue.email,
-      //     number: inputChangeValue.number,
-      //     pinCode: inputChangeValue.pinCode,
-      //     message: inputChangeValue.message,
-      //   })
-      // );
-    }
+    // if (
+    //   inputChangeValue.name !== "" &&
+    //   inputChangeValue.email !== "" &&
+    //   inputChangeValue.number !== "" &&
+    //   inputChangeValue.pinCode !== ""
+    // ) {
+    //   console.log('181', inputChangeValue)
+    // dispatch(
+    //   AddformAction({
+    //     name: inputChangeValue.name,
+    //     email: inputChangeValue.email,
+    //     number: inputChangeValue.number,
+    //     pinCode: inputChangeValue.pinCode,
+    //     message: inputChangeValue.message,
+    //   })
+    // );
+    // }
   };
 
   return (
@@ -295,9 +354,9 @@ const LandingPage = (props) => {
                   of experienced professionals
                 </p>
                 <button
-                  className="buttons"
                   data-aos="fade-left"
                   data-aos-duration="1000"
+                  className="buttons"
                 >
                   <a href="tel:+15195741080">Contact Now</a>
                 </button>
@@ -398,7 +457,7 @@ const LandingPage = (props) => {
           >
             <li className="nav-item" role="presentation" data-aos="fade-right">
               <button
-                className="nav-link active"
+                className="nav-link active frist_tab"
                 id="pills-home-tab"
                 data-bs-toggle="pill"
                 data-bs-target="#pills-home"
@@ -412,7 +471,7 @@ const LandingPage = (props) => {
             </li>
             <li className="nav-item" role="presentation" data-aos="fade-left">
               <button
-                className="nav-link"
+                className="nav-link second_tab"
                 id="pills-profile-tab"
                 data-bs-toggle="pill"
                 data-bs-target="#pills-profile"
@@ -612,79 +671,91 @@ const LandingPage = (props) => {
                   <input
                     name="name"
                     type="text"
-                    className="form-control"
+                    className={inputChangeValue.name === "" ? (
+                      error.name.length > 0 ? "is-invalid form-control" : "form-control"
+                    ) : "form-control"}
+                    autoComplete="off"
                     placeholder="Name"
                     onChange={onInputChange}
                   />
-                  {error.name && (
-                    <>
-                      <span className="text-danger">{error.name}</span>
-                    </>
-                  )}
+                  {
+                    inputChangeValue.name === '' && (
+                      error.name && (
+                        <small className="text-danger">
+                          {error.name}
+                        </small>
+                      )
+                    )
+                  }
                 </div>
 
                 <div className="col-md-6">
                   <input
                     name="number"
                     type="number"
-                    className="form-control"
+                    className={inputChangeValue.number === "" ? (
+                      error.number.length > 0 ? "is-invalid form-control" : "form-control"
+                    ) : "form-control"}
                     id="inputPassword4"
+                    autoComplete="off"
                     placeholder="Phone"
                     onChange={onInputChange}
                   />
-
-                  {error.number && (
-                    <>
-                      <span className="text-danger">{error.number}</span>
-                    </>
-                  )}
+                  {
+                    inputChangeValue.number === '' && (
+                      error.number && (
+                        <small className="text-danger">
+                          {error.number}
+                        </small>
+                      )
+                    )
+                  }
                 </div>
                 <div className="col-md-6">
                   <input
                     name="email"
                     type="email"
-                    className="form-control"
+                    className={inputChangeValue.email === "" ? (
+                      error.email.length > 0 ? "is-invalid form-control" : "form-control"
+                    ) : "form-control"}
                     id="inputEmail4"
+                    autoComplete="off"
                     placeholder="Email id"
                     onChange={onInputChange}
                   />
-                  {error.email && (
-                    <>
-                      <span className="text-danger">{error.email}</span>
-                    </>
-                  )}
+                  {
+                    inputChangeValue.email === '' && (
+                      error.email && (
+                        <small className="text-danger">
+                          {error.email}
+                        </small>
+                      )
+                    )
+                  }
                 </div>
                 <div className="col-md-6">
                   <input
                     name="pinCode"
                     type="text"
                     className="form-control"
+                    autoComplete="off"
                     id="inputPassword4"
                     placeholder="Pin Code"
                     onChange={onInputChange}
                   />
-                  {error.pinCode && (
-                    <>
-                      <span className="text-danger">{error.pinCode}</span>
-                    </>
-                  )}
                 </div>
                 <div className="col-md-12">
                   <textarea
                     name="message"
                     className="form-control"
                     rows="3"
+                    autoComplete="off"
                     placeholder="Message"
                     id="inputPassword4"
                     onChange={onInputChange}
                   ></textarea>
-                  {error.message && (
-                    <>
-                      <span className="text-danger">{error.message}</span>
-                    </>
-                  )}
                 </div>
-                <div className="col-md-6">
+                {/* <div className="col-md-6">
                   <input
                     name="nofile"
                     className="form-control form-control-lg file_choose_fild"
@@ -696,6 +767,15 @@ const LandingPage = (props) => {
                       <span className="text-danger">{error.nofile}</span>
                     </>
                   )}
+                </div> */}
+                {/* new add */}
+                <div className="input-group">
+                  <fieldset className="col-12">
+                    <input className="form-control" id="file-to-upload" type="file" />
+                  </fieldset>
+                  <button id="button-reset" className="close_button" type="button">
+                    <i className="fa-regular fa-circle-xmark"></i>
+                  </button>
                 </div>
                 <div className="col-12">
                   <button
@@ -725,8 +805,8 @@ const LandingPage = (props) => {
                   </a>
                 </li>
                 <li>
-                  <a href="mailto:Contact@primecon.ca">
-                    <i className="fa-solid fa-envelope p-2"></i> Contact@primecon.ca
+                  <a href="mailto:info@primecon.ca">
+                    <i className="fa-solid fa-envelope p-2"></i> Info@primecon.ca
                   </a>
                 </li>
                 <li>

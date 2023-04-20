@@ -37,11 +37,12 @@ scrollbar button
   padding: 10px 0;
   cursor: pointer;
   font-weight: bold;
-  transition: all 0.5s;
+  transition: all 1s;
   position: fixed;
   right: 10px;
   bottom: 10px;
   border: 1px solid #E9F1FF;
+  z-index: 10000;
 }
 
 #buttonnn:hover {
@@ -127,7 +128,7 @@ buttons
   padding: 10px 20px 10px 20px;
   background-color: var(--primary-color);
   border-radius: 10px;
-  transition: 1s;
+  transition: 1s !important;
   display: flex;
   align-items: center;
   box-shadow: 0px 8px 10px 0px #212D9266;
@@ -433,15 +434,22 @@ top: -80px;
   background-color: var(--primary-color) !important;
   box-shadow: 0px 7px 10px 0px #212D9266 !important;
 }
-.prime_Project .nav-pills .nav-item{
+.prime_Project .nav-pills .nav-item .frist_tab{
   border: 1px solid var(--primary-color);
+  border-radius: 8px 0px 0px 8px !important;
 }
-/* .prime_Project .nav-pills .nav-item:first-child{
-  border-radius: 10px 0px 0px 10px;
+.prime_Project .nav-pills .nav-item .second_tab{
+  border: 1px solid var(--primary-color);
+  border-radius: 0px 8px 8px 0px !important;
 }
-.prime_Project .nav-pills .nav-item:nth-child(2){
-  border-radius: 0px 10px 10px 0px;
-} */
+.nav-pills .frist_tab.active, .nav-pills .show>.frist_tab{
+  border: 1px solid var(--primary-color);
+  border-radius: 0px 8px 8px 0px !important;
+}
+.nav-pills .second_tab.active, .nav-pills .show>.second_tab{
+  border: 1px solid var(--primary-color);
+  border-radius: 8px 0px 0px 8px !important;
+}
 .prime_Project .nav-pills .nav-link {
   background: 0 0;
   border-radius: 0px !important;
@@ -549,6 +557,14 @@ top: -80px;
   letter-spacing: -0.04em;
   color: var(--primary-color);
   margin-bottom: 29px;
+}
+.close_button{
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 20px;
+  top: 8px;
+  color: var(--primary-color);
 }
 @media (max-width:768px){
   .choosus_cards div{
