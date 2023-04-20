@@ -1,5 +1,4 @@
 import AOS from 'aos';
-let $;
 
 // var scrollSpy = new bootstrap.ScrollSpy(document.body, {
 //     target: '#nav'

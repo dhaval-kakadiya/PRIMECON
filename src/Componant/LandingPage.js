@@ -95,7 +95,7 @@ const LandingPage = (props) => {
       ...preve,
       [name]: value,
     }));
-    console.log(inputChangeValue);
+    // console.log(inputChangeValue);
 
     //   switch (name) {
     //     case "name":
