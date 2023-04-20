@@ -684,7 +684,7 @@ const LandingPage = (props) => {
                     </>
                   )}
                 </div>
-                <div className="col-md-6">
+                {/* <div className="col-md-6">
                   <input
                     name="nofile"
                     className="form-control form-control-lg file_choose_fild"
@@ -696,7 +696,15 @@ const LandingPage = (props) => {
                       <span className="text-danger">{error.nofile}</span>
                     </>
                   )}
-                </div>
+                </div> */}
+                <div class="input-group">
+                        <fieldset class="col-12">
+                            <input class="form-control" id="file-to-upload" type="file" />  
+                        </fieldset>
+                        <button id="button-reset" class="close_button" type="button">
+                            <i class="fa-regular fa-circle-xmark"></i>
+                          </button> 
+                      </div>
                 <div className="col-12">
                   <button
                     className="buttons"
@@ -725,8 +733,8 @@ const LandingPage = (props) => {
                   </a>
                 </li>
                 <li>
-                  <a href="mailto:Contact@primecon.ca">
-                    <i className="fa-solid fa-envelope p-2"></i> Contact@primecon.ca
+                  <a href="mailto:info@primecon.ca">
+                    <i className="fa-solid fa-envelope p-2"></i> Info@primecon.ca
                   </a>
                 </li>
                 <li>

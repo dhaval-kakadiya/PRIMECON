@@ -112,3 +112,17 @@ function removeClass(elemOne, elemTwo) {
   elemOne.classList.remove('fixed');
   elemTwo.style.marginTop = '0px';
 }
+
+
+
+
+// close button 
+$('#button-reset').click(function(e){
+  var $el = $('#file-to-upload');
+  $el.wrap('<form>').closest('form').get(0).reset();
+  $el.unwrap();
+});
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+// close button 
