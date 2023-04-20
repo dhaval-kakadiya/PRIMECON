@@ -697,6 +697,7 @@ const LandingPage = (props) => {
                     </>
                   )}
                 </div> */}
+                {/* new add */}
                 <div class="input-group">
                         <fieldset class="col-12">
                             <input class="form-control" id="file-to-upload" type="file" />  
