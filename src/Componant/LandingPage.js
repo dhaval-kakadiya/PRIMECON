@@ -27,7 +27,7 @@ import project2 from "../image/project-img2.png";
 import Satisfaction from "../image/Satisfaction.png";
 import Quality from "../image/Quality.png";
 import Hat from "../image/Hat.png";
-import { AddformAction } from "./Store/action/AddFormAction";
+import { AddformAction, fileUpload } from "./Store/action/AddFormAction";
 import { connect } from "react-redux";
 import { useDispatch } from "react-redux";
 import { Toast } from "bootstrap";
@@ -52,11 +52,7 @@ const LandingPage = (props) => {
     nofile: "",
   });
 
-  const [error, setError] = useState({
-    name: '',
-    number: '',
-    email: ''
-  })
+  const [error, setError] = useState({})
   // const [error, seterror] = useState({
   //   name: false,
   //   email: false,
@@ -108,86 +104,54 @@ const LandingPage = (props) => {
   // }, [props.AddformReducer]);
 
   const onInputChange = (e) => {
-    const { name, value } = e.target;
-    setinputChangeValue((preve) => ({
-      ...preve,
-      [name]: value,
-    }));
-    const regex = /^[a-z0-9]@g(oogle)?mail\.com$/
-
-    // console.log(inputChangeValue);
-
-    //   switch (name) {
-    //     case "name":
-    //       if (inputChangeValue.name == "") {
-    //         seterror((preve) => ({
-    //           ...preve,
-    //           name: "Name is Requiredddd",
-    //         }));
-    //       } else {
-    //         seterror((preve) => ({
-    //           ...preve,
-    //           name: false,
-    //         }));
-    //       }
-    //       break;
-    //     case "email":
-    //       if (inputChangeValue.email === "") {
-    //         seterror((preve) => ({
-    //           ...preve,
-    //           email: "email is Required",
-    //         }));
-    //       } else {
-    //         seterror((preve) => ({
-    //           ...preve,
-    //           email: false,
-    //         }));
-    //       }
-    //       break;
-    //     case "number":
-    //       if (inputChangeValue.number === "") {
-    //         seterror((preve) => ({
-    //           ...preve,
-    //           number: "number is Required",
-    //         }));
-    //       } else {
-    //         seterror((preve) => ({
-    //           ...preve,
-    //           number: false,
-    //         }));
-    //       }
-    //       break;
-    //     case "pinCode":
-    //       if (inputChangeValue.pinCode === "") {
-    //         seterror((preve) => ({
-    //           ...preve,
-    //           pinCode: "pinCode is Required",
-    //         }));
-    //       } else {
-    //         seterror((preve) => ({
-    //           ...preve,
-    //           pinCode: false,
-    //         }));
-    //       }
-    //       break;
-    //     case "message":
-    //       if (inputChangeValue.message === "") {
-    //         seterror((preve) => ({
-    //           ...preve,
-    //           message: "message is Required",
-    //         }));
-    //       } else {
-    //         seterror((preve) => ({
-    //           ...preve,
-    //           message: false,
-    //         }));
-    //       }
-    //       break;
-
-    //     default:
-    //       break;
-    //   }
+    setinputChangeValue({
+      ...inputChangeValue,
+      [e.target.name]: e.target.value,
+    })
+    // setinputChangeValue((preve) => (
+    //   console.log(preve)
+    // ))
   };
+
+  const onFileUpload = (e) => {
+    setinputChangeValue((x) => ({
+      ...x,
+      [e.target.name]: e.target.files[0]
+    }))
+    // setinputChangeValue({
+    //   ...inputChangeValue,
+    //   nofile: e.target.files[0]
+    // })
+  }
+
+  const isValidate = () => {
+    let err = {}
+
+    if (inputChangeValue.name === '') {
+      err.name = "Name is Required"
+    }
+
+    if (inputChangeValue.number === '') {
+      err.number = "Number is Required"
+    }
+    else {
+      if (inputChangeValue.number.length > 10 || inputChangeValue.number.length < 10) {
+        err.number = "Please Enter Valid Number"
+      }
+    }
+
+    if (inputChangeValue.email === "") {
+      err.email = "Email is Required"
+    } else {
+      let regex = /^\w+([\.-]?\w+)*@gmail.com/
+      if (!regex.test(inputChangeValue.email)) {
+        err.email = "Please Enter Valid Email"
+      }
+    }
+    setError({ ...err })
+
+    return Object.keys(err).length < 1
+  }
 
   const resetForm = () => {
     setinputChangeValue({
@@ -201,59 +165,26 @@ const LandingPage = (props) => {
   }
 
   const inputSubmit = (e) => {
+
     e.preventDefault();
-    const regex = /^[a-z0-9]@g(oogle)?mail\.com$/
 
-    if (!inputChangeValue.name || !inputChangeValue.number || !inputChangeValue.email) {
-      setError({
-        ...error,
-        name: "Name is Required",
-        number: "Phone is Required",
-        email: "Email is Required"
-      })
-    }
-    else {
+    let isValid = isValidate()
+    if (isValid) {
       console.log(inputChangeValue)
+      dispatch(AddformAction({
+        name: inputChangeValue.name,
+        email: inputChangeValue.email,
+        number: inputChangeValue.number,
+        pinCode: inputChangeValue.pinCode,
+        message: inputChangeValue.message,
+      }))
+      // dispatch(fileUpload({
+      //   nofile: inputChangeValue.nofile
+      // }))
+      resetForm()
+    } else {
+      console.log("b")
     }
-    resetForm()
-
-    // if (!inputChangeValue.number) {
-    //   setError({
-    //     ...error,
-    //     number: "Phone is Required"
-    //   })
-    // }
-    // if (!inputChangeValue.email) {
-    //   setError({
-    //     ...error,
-    //     email: "Email is Required"
-    //   })
-    // }
-
-    // if (inputChangeValue.name === "") {
-    //   seterror((preve) => ({
-    //     ...preve,
-    //     name: "Name Is Required",
-    //   }));
-    // }
-    // if (inputChangeValue.email === "") {
-    //   seterror((preve) => ({
-    //     ...preve,
-    //     email: "Email Is Required",
-    //   }));
-    // }
-    // if (inputChangeValue.number === "") {
-    //   seterror((preve) => ({
-    //     ...preve,
-    //     number: "Number Is Required",
-    //   }));
-    // }
-    // if (inputChangeValue.pinCode === "") {
-    //   seterror((preve) => ({
-    //     ...preve,
-    //     pinCode: "Pincode Is Required",
-    //   }));
-    // }
 
     // if (
     //   inputChangeValue.name !== "" &&
@@ -666,13 +597,15 @@ const LandingPage = (props) => {
                 className="row g-3"
                 data-aos="zoom-in"
                 data-aos-duration="1000"
+                onSubmit={inputSubmit}
               >
                 <div className="col-md-6">
                   <input
                     name="name"
                     type="text"
+                    value={inputChangeValue.name}
                     className={inputChangeValue.name === "" ? (
-                      error.name.length > 0 ? "is-invalid form-control" : "form-control"
+                      error.name ? "is-invalid form-control" : "form-control"
                     ) : "form-control"}
                     autoComplete="off"
                     placeholder="Name"
@@ -693,51 +626,91 @@ const LandingPage = (props) => {
                   <input
                     name="number"
                     type="number"
-                    className={inputChangeValue.number === "" ? (
-                      error.number.length > 0 ? "is-invalid form-control" : "form-control"
-                    ) : "form-control"}
+                    value={inputChangeValue.number}
+                    className={`
+                      ${inputChangeValue.number === "" ? (
+                        error.number ? "is-invalid form-control" : "form-control"
+                      ) : "form-control"}
+                  ${(inputChangeValue.number.length > 10 || inputChangeValue.number.length < 10) ? (
+                        error.number ? "is-invalid form-control" : "form-control"
+                      ) : "form-control"}
+                    `}
                     id="inputPassword4"
+                    maxLength="10"
                     autoComplete="off"
                     placeholder="Phone"
                     onChange={onInputChange}
                   />
                   {
-                    inputChangeValue.number === '' && (
-                      error.number && (
+                    inputChangeValue.number === '' ?
+                      error.number ? (
                         <small className="text-danger">
                           {error.number}
                         </small>
-                      )
-                    )
+                      ) : ''
+                      : (inputChangeValue.number.length > 10 || inputChangeValue.number.length < 10) ?
+                        error.number && (
+                          <small className="text-danger">
+                            {error.number}
+                          </small>
+                        )
+                        : ''
                   }
+                  {/* {
+                    error.number && (
+                      <small className="text-danger">
+                        {error.number}
+                      </small>
+                    )
+                  } */}
                 </div>
                 <div className="col-md-6">
                   <input
                     name="email"
                     type="email"
-                    className={inputChangeValue.email === "" ? (
-                      error.email.length > 0 ? "is-invalid form-control" : "form-control"
-                    ) : "form-control"}
+                    value={inputChangeValue.email}
+                    className={`
+                      ${inputChangeValue.email === "" ? (
+                        error.email ? "is-invalid form-control" : "form-control"
+                      ) : "form-control"}
+                  ${(!(/^\w+([\.-]?\w+)*@gmail.com/).test(inputChangeValue.email)) ? (
+                        error.email ? "is-invalid form-control" : "form-control"
+                      ) : "form-control"}
+                    `}
                     id="inputEmail4"
                     autoComplete="off"
                     placeholder="Email id"
                     onChange={onInputChange}
                   />
                   {
-                    inputChangeValue.email === '' && (
+                    inputChangeValue.email === '' ?
+                      error.email ? (
+                        <small className="text-danger">
+                          {error.email}
+                        </small>
+                      ) : ''
+                      : (!(/^\w+([\.-]?\w+)*@gmail.com/).test(inputChangeValue.email)) ?
+                        error.email && (
+                          <small className="text-danger">
+                            {error.email}
+                          </small>
+                        )
+                        : ''
+                  }
+                  {/* {
                       error.email && (
                         <small className="text-danger">
                           {error.email}
                         </small>
                       )
-                    )
-                  }
+                  } */}
                 </div>
                 <div className="col-md-6">
                   <input
                     name="pinCode"
                     type="text"
                     className="form-control"
+                    value={inputChangeValue.pinCode}
                     autoComplete="off"
                     id="inputPassword4"
                     placeholder="Pin Code"
@@ -747,6 +720,7 @@ const LandingPage = (props) => {
                 <div className="col-md-12">
                   <textarea
                     name="message"
+                    value={inputChangeValue.message}
                     className="form-control"
                     rows="3"
                     autoComplete="off"
@@ -768,29 +742,34 @@ const LandingPage = (props) => {
                     </>
                   )}
                 </div> */}
-                {/* new add */}
                 <div className="input-group">
-                  <fieldset className="col-12">
-                    <input className="form-control" id="file-to-upload" type="file" />
-                  </fieldset>
+                  <input name="nofile" onChange={onFileUpload} className="form-control" id="file-to-upload" type="file" />
                   <button id="button-reset" className="close_button" type="button">
                     <i className="fa-regular fa-circle-xmark"></i>
                   </button>
                 </div>
+                {/* new add */}
+                {/* <div className="input-group">
+                  <fieldset className="col-12">
+                    <input name="nofile" onChange={onFileUpload} className="form-control" id="file-to-upload" type="file"/>
+                    <button id="button-reset" className="close_button" type="button">
+                      <i className="fa-regular fa-circle-xmark"></i>
+                    </button>
+                  </fieldset>
+                </div> */}
                 <div className="col-12">
                   <button
                     className="buttons"
                     type="submit"
-                    onClick={inputSubmit}
                   >
-                    <a href="">Submit</a>
+                    Submit
                   </button>
                 </div>
               </form>
             </div>
           </div>
-        </div>
-      </section>
+        </div >
+      </section >
 
       <section className="prime_footer">
         <div className="container text-center text-lg-start">
@@ -871,7 +850,7 @@ const LandingPage = (props) => {
       </section>
 
       <ToastContainer />
-    </div>
+    </div >
   );
 };
 
