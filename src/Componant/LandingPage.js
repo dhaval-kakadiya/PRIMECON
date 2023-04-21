@@ -742,21 +742,21 @@ const LandingPage = (props) => {
                     </>
                   )}
                 </div> */}
-                <div className="input-group">
+                {/* <div className="input-group">
                   <input name="nofile" onChange={onFileUpload} className="form-control" id="file-to-upload" type="file" />
                   <button id="button-reset" className="close_button" type="button">
                     <i className="fa-regular fa-circle-xmark"></i>
                   </button>
-                </div>
+                </div> */}
                 {/* new add */}
-                {/* <div className="input-group">
+                <div className="input-group">
                   <fieldset className="col-12">
                     <input name="nofile" onChange={onFileUpload} className="form-control" id="file-to-upload" type="file"/>
                     <button id="button-reset" className="close_button" type="button">
                       <i className="fa-regular fa-circle-xmark"></i>
                     </button>
                   </fieldset>
-                </div> */}
+                </div>
                 <div className="col-12">
                   <button
                     className="buttons"
