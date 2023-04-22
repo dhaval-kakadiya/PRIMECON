@@ -38,6 +38,7 @@ import { useSelector } from "react-redux";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import $ from 'jquery'
+import axios from "axios";
 
 const LandingPage = (props) => {
   // console.log(props);
@@ -46,10 +47,10 @@ const LandingPage = (props) => {
   const [inputChangeValue, setinputChangeValue] = useState({
     name: "",
     email: "",
-    number: "",
+    phone: "",
     pinCode: "",
     message: "",
-    nofile: "",
+    files: []
   });
 
   const [error, setError] = useState({})
@@ -114,10 +115,30 @@ const LandingPage = (props) => {
   };
 
   const onFileUpload = (e) => {
-    setinputChangeValue((x) => ({
-      ...x,
-      [e.target.name]: e.target.files[0]
-    }))
+
+    // dispatch(fileUpload({e}))
+
+    const formData = new FormData();
+
+    for (let i = 0; i < e.target.files.length; i++) {
+      formData.append('image', e.target.files[i])
+    }
+
+    axios.post("https://primecon-backend.vercel.app/v1/user/upload-file", formData)
+      .then((res) => {
+        console.log('129', res.data)
+        setinputChangeValue({
+          ...inputChangeValue,
+          files: res.data.data
+        })
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    // setinputChangeValue((x) => ({
+    //   ...x,
+    //   [e.target.name]: e.target.files
+    // }))
     // setinputChangeValue({
     //   ...inputChangeValue,
     //   nofile: e.target.files[0]
@@ -131,12 +152,12 @@ const LandingPage = (props) => {
       err.name = "Name is Required"
     }
 
-    if (inputChangeValue.number === '') {
-      err.number = "Number is Required"
+    if (inputChangeValue.phone === '') {
+      err.phone = "Phone is Required"
     }
     else {
-      if (inputChangeValue.number.length > 10 || inputChangeValue.number.length < 10) {
-        err.number = "Please Enter Valid Number"
+      if (inputChangeValue.phone.length > 10 || inputChangeValue.phone.length < 10) {
+        err.phone = "Please Enter Valid Number"
       }
     }
 
@@ -157,10 +178,10 @@ const LandingPage = (props) => {
     setinputChangeValue({
       name: "",
       email: "",
-      number: "",
+      phone: "",
       pinCode: "",
       message: "",
-      nofile: "",
+      files: [],
     })
   }
 
@@ -170,17 +191,13 @@ const LandingPage = (props) => {
 
     let isValid = isValidate()
     if (isValid) {
-      console.log(inputChangeValue)
-      dispatch(AddformAction({
-        name: inputChangeValue.name,
-        email: inputChangeValue.email,
-        number: inputChangeValue.number,
-        pinCode: inputChangeValue.pinCode,
-        message: inputChangeValue.message,
-      }))
-      // dispatch(fileUpload({
-      //   nofile: inputChangeValue.nofile
-      // }))
+      axios.post("https://primecon-backend.vercel.app/v1/user/add", inputChangeValue)
+        .then((res) => {
+          console.log('191', res)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
       resetForm()
     } else {
       console.log("b")
@@ -624,15 +641,15 @@ const LandingPage = (props) => {
 
                 <div className="col-md-6">
                   <input
-                    name="number"
+                    name="phone"
                     type="number"
-                    value={inputChangeValue.number}
+                    value={inputChangeValue.phone}
                     className={`
                       ${inputChangeValue.number === "" ? (
-                        error.number ? "is-invalid form-control" : "form-control"
+                        error.phone ? "is-invalid form-control" : "form-control"
                       ) : "form-control"}
-                  ${(inputChangeValue.number.length > 10 || inputChangeValue.number.length < 10) ? (
-                        error.number ? "is-invalid form-control" : "form-control"
+                  ${(inputChangeValue.phone.length > 10 || inputChangeValue.phone.length < 10) ? (
+                        error.phone ? "is-invalid form-control" : "form-control"
                       ) : "form-control"}
                     `}
                     id="inputPassword4"
@@ -642,16 +659,16 @@ const LandingPage = (props) => {
                     onChange={onInputChange}
                   />
                   {
-                    inputChangeValue.number === '' ?
-                      error.number ? (
+                    inputChangeValue.phone === '' ?
+                      error.phone ? (
                         <small className="text-danger">
-                          {error.number}
+                          {error.phone}
                         </small>
                       ) : ''
-                      : (inputChangeValue.number.length > 10 || inputChangeValue.number.length < 10) ?
-                        error.number && (
+                      : (inputChangeValue.phone.length > 10 || inputChangeValue.phone.length < 10) ?
+                        error.phone && (
                           <small className="text-danger">
-                            {error.number}
+                            {error.phone}
                           </small>
                         )
                         : ''
@@ -751,7 +768,7 @@ const LandingPage = (props) => {
                 {/* new add */}
                 <div className="input-group">
                   <fieldset className="col-12">
-                    <input name="nofile" onChange={onFileUpload} className="form-control" id="file-to-upload" type="file"/>
+                    <input name="files" onChange={onFileUpload} className="form-control" id="file-to-upload" type="file" multiple />
                     <button id="button-reset" className="close_button" type="button">
                       <i className="fa-regular fa-circle-xmark"></i>
                     </button>

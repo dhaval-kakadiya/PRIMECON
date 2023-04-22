@@ -38,7 +38,7 @@ const Header = () => {
 
   return (
     <>
-      {/* <nav className="navbar navbar-expand-lg" id="nav">
+      {/* <nav className="navbar navbar-expand-lg" id="nav"> 
         <div className="container">
           <a className="navbar-brand" href="#">
           <img src={Image} alt="" width="60%"/>
@@ -70,9 +70,9 @@ const Header = () => {
         <div className="container">
           <a className="navbar-brand" href="#"> <img src={Image} alt="" width="60%" /></a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler"><i className="fa-solid fa-bars"></i></span>
+            <span className="navbar-toggler-icon"><i className="fa-solid fa-bars"></i></span>
           </button>
-
+          
           <div className={`collapse ${scrollDirection === "down" && "hide"} navbar-collapse`} id="navbarNav">
             <ul className="navbar-nav ms-auto gap-4">
               <li className="nav-item">

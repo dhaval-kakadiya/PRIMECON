@@ -1,18 +1,8 @@
 import axios from "axios";
-import { adddFormDataUrl } from "../ApiSheet";
-import { ADD_FORM_DATA_ERROR, ADD_FORM_DATA_LOADING, ADD_FORM_DATA_SUCCESS } from "../Constant";
+import { adddFormDataUrl, fileUploadUrl } from "../ApiSheet";
+import { ADD_FORM_DATA_ERROR, ADD_FORM_DATA_LOADING, ADD_FORM_DATA_SUCCESS, FILE_UPLOAD } from "../Constant";
 
 export const AddformAction = (details) => {
-  console.log('6', details);
-
-  const formData = new FormData()
-  formData.append('name', details.name)
-  formData.append('email', details.email)
-  formData.append('number', details.number)
-  formData.append('pincode', details.pincode)
-  formData.append('message', details.message)
-
-  console.log('15', formData);
 
   return (dispatch) => {
     dispatch({
@@ -58,6 +48,30 @@ export const AddformAction = (details) => {
   };
 }
 
+const file = (data) => ({
+  type: FILE_UPLOAD,
+  payload: data
+})
+
 export const fileUpload = (x) => {
-  console.log('62', x)
+  console.log('57', x)
+  // return function (dispatch) {
+  //   dispatch(file(x))
+  //   const formData = new FormData();
+
+  //   for (let i = 0; i < e.target.files.length; i++) {
+  //     formData.append('image', e.target.files[i])
+  //   }
+
+  //   axios.post("https://primecon-backend.vercel.app/v1/user/upload-file", formData)
+  //     .then((res) => {
+  //       setinputChangeValue({
+  //         ...inputChangeValue,
+  //         files: res.data.data
+  //       })
+  //     })
+  //     .catch((error) => {
+  //       console.log(error)
+  //     })
+  // }
 }
