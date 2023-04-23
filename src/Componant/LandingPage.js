@@ -31,14 +31,15 @@ import { AddformAction, fileUpload } from "./Store/action/AddFormAction";
 import { connect } from "react-redux";
 import { useDispatch } from "react-redux";
 import { Toast } from "bootstrap";
-import { Form, ToastContainer, ToastHeader } from "react-bootstrap";
-import { toast } from "react-toastify";
+import { Form, ToastHeader } from "react-bootstrap";
 import Image from "../image/Primecon Logo.png";
 import { useSelector } from "react-redux";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import $ from 'jquery'
 import axios from "axios";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
 
 const LandingPage = (props) => {
   // console.log(props);
@@ -194,11 +195,21 @@ const LandingPage = (props) => {
       axios.post("https://primecon-backend.vercel.app/v1/user/add", inputChangeValue)
         .then((res) => {
           console.log('191', res)
+          toast.success('Successfully Submmited !', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+          resetForm()
         })
         .catch((error) => {
           console.log(error)
         })
-      resetForm()
     } else {
       console.log("b")
     }
@@ -645,7 +656,7 @@ const LandingPage = (props) => {
                     type="number"
                     value={inputChangeValue.phone}
                     className={`
-                      ${inputChangeValue.number === "" ? (
+                      ${inputChangeValue.phone === "" ? (
                         error.phone ? "is-invalid form-control" : "form-control"
                       ) : "form-control"}
                   ${(inputChangeValue.phone.length > 10 || inputChangeValue.phone.length < 10) ? (
