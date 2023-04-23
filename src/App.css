@@ -34,12 +34,15 @@ scrollbar button
 
 #buttonnn {
   height: 40px;
-  width: 50px;
-  background-color: #212D92;
+  width: 40px;
+  /* background-color: #212D92; */
+  background-color: #c8d4ea95 !important;
+  backdrop-filter: blur(30px) !important;
   border-radius: 8px;
-  color: white;
+  /* color: white; */
+  color: #212D92;
   text-align: center;
-  padding: 10px 0;
+  padding: 8px 0;
   cursor: pointer;
   font-weight: bold;
   transition: all 1s;
@@ -214,6 +217,7 @@ buttons
 
 .navbar-toggler {
   color: var(--white-color);
+  border: var(--bs-border-width) solid rgb(0 0 0 / 0%);
 }
 
 .navbar-toggler:focus {
