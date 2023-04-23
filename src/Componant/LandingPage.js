@@ -205,6 +205,7 @@ const LandingPage = (props) => {
             progress: undefined,
             theme: "light",
           });
+          e.target.files.value = []
           resetForm()
         })
         .catch((error) => {
