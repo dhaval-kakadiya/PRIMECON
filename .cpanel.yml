@@ -1,4 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/src/App.js
+    - export DEPLOYPATH=/home/primecon/public_html/
+    - /bin/cp * $DEPLOYPATH
