@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/primecon/public_html/
+    - export DEPLOYPATH=/home/primecon/repositories/
     - /bin/cp * $DEPLOYPATH
