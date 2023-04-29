@@ -15,10 +15,10 @@ html {
 }
 
 :root {
-  --Poppins-font: 'poppins', sans-serif;
+  --Poppins-font: "poppins", sans-serif;
   --white-color: #ffffff;
   --black-color: #000;
-  --primary-color: #212D92;
+  --primary-color: #212d92;
   --text-color: #292929;
 }
 
@@ -40,7 +40,7 @@ scrollbar button
   backdrop-filter: blur(30px) !important;
   border-radius: 8px;
   /* color: white; */
-  color: #212D92;
+  color: #212d92;
   text-align: center;
   padding: 8px 0;
   cursor: pointer;
@@ -49,14 +49,14 @@ scrollbar button
   position: fixed;
   right: 10px;
   bottom: 10px;
-  border: 1px solid #E9F1FF;
+  border: 1px solid #e9f1ff;
   z-index: 10000;
 }
 
 #buttonnn:hover {
-  background-color: #E9F1FF;
-  border: 1px solid #212D92;
-  color: #212D92;
+  background-color: #e9f1ff;
+  border: 1px solid #212d92;
+  color: #212d92;
 }
 
 /* #buttonnn {
@@ -66,7 +66,7 @@ scrollbar button
   position: fixed;
   bottom: 30px;
   right: 30px;
-  transition: background-color .3s, 
+  transition: background-color .3s,
     opacity .5s, visibility .5s;
   opacity: 0;
   visibility: hidden;
@@ -107,7 +107,7 @@ scrollbar button
 ================== */
 
 /* ============
-scrollbar 
+scrollbar
 ============ */
 ::-webkit-scrollbar {
   width: 8px;
@@ -126,7 +126,7 @@ scrollbar
 }
 
 /* ============
-scrollbar 
+scrollbar
 ============ */
 
 /* ===========
@@ -140,7 +140,7 @@ buttons
   transition: 1s !important;
   display: flex;
   align-items: center;
-  box-shadow: 0px 8px 10px 0px #212D9266;
+  box-shadow: 0px 8px 10px 0px #212d9266;
   color: var(--white-color);
 }
 
@@ -169,7 +169,7 @@ buttons
   color: var(--primary-color) !important;
 }
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
   .buttons:hover {
     border: 2px solid var(--primary-color);
     background-color: var(--primary-color);
@@ -178,9 +178,12 @@ buttons
   .buttons:hover a {
     color: var(--white-color) !important;
   }
+  .buttons:hover {
+    color: var(--white-color) !important;
+  }
 }
 
-@media (max-width:992px) {
+@media (max-width: 992px) {
   .buttons {
     margin: 0 auto;
   }
@@ -198,7 +201,7 @@ buttons
   right: 0;
   left: 0;
   z-index: 999;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
 
 .navbar.hide {
@@ -236,7 +239,7 @@ buttons
 }
 
 .navbar-nav .nav-link.active,
-.navbar-nav .show>.nav-link {
+.navbar-nav .show > .nav-link {
   color: var(--white-color) !important;
 }
 
@@ -273,13 +276,13 @@ buttons
   margin-top: 5px;
 }
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
   .navbar .navbar-collapse .navbar-nav .nav-item .nav-link:hover {
     border-bottom: 0px solid transparent !important;
   }
 }
 
-@media (max-width:992px) {
+@media (max-width: 992px) {
   .navbar_btn {
     padding: 0px 8px;
   }
@@ -317,7 +320,7 @@ buttons
   border-radius: 0px 0px 0px 40%;
 }
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
   .headding_h {
     font-size: 30px;
     line-height: 35px;
@@ -327,10 +330,9 @@ buttons
     font-size: 15px;
     line-height: 20px;
   }
-
 }
 
-@media (max-width:992px) {
+@media (max-width: 992px) {
   .prime_hero img {
     border-radius: 0px 0px 0px 0px;
     margin-top: 20px;
@@ -345,7 +347,7 @@ buttons
   }
 }
 
-@media (max-width:1399px) {
+@media (max-width: 1399px) {
   .prime_hero .headding_h {
     margin-top: 50px;
   }
@@ -356,11 +358,12 @@ buttons
 /* section-3 start  */
 .prime_weare {
   padding: 50px 0px 70px 0px;
-  background-image: url(../src/image/whoweare-bg1.png), url(../src/image/whoweare-bg2.png);
+  background-image: url(../src/image/whoweare-bg1.png),
+    url(../src/image/whoweare-bg2.png);
   background-repeat: no-repeat;
   background-position: top left, right bottom;
   background-size: 70px, 70px;
-  border-top: 3px solid #EFF1FF;
+  border-top: 3px solid #eff1ff;
 }
 
 .prime_weare img {
@@ -376,7 +379,7 @@ buttons
   font-weight: 600;
 }
 
-@media (max-width:992px) {
+@media (max-width: 992px) {
   .prime_weare img {
     border-radius: 0px 0px 0px 0px;
     margin-top: 20px;
@@ -387,7 +390,7 @@ buttons
   }
 
   .prime_weare {
-    border: 0px solid #EFF1FF;
+    border: 0px solid #eff1ff;
   }
 
   .prime_weare {
@@ -409,7 +412,7 @@ buttons
 }
 
 .prime_service .headding_text {
-  color: #83A2F3;
+  color: #83a2f3;
   margin-bottom: 60px;
 }
 
@@ -418,7 +421,7 @@ buttons
   font-weight: 700;
   font-size: 66px;
   line-height: 60px;
-  color: #3441AE;
+  color: #3441ae;
   flex: none;
   order: 0;
   flex-grow: 0;
@@ -430,7 +433,7 @@ buttons
   font-weight: 700;
   font-size: 23px;
   line-height: 29px;
-  color: #FFFFFF;
+  color: #ffffff;
   flex: none;
   order: 1;
   flex-grow: 0;
@@ -447,7 +450,7 @@ buttons
   border-radius: 16px;
 }
 
-@media (max-width:576px) {
+@media (max-width: 576px) {
   .service_number {
     font-size: 46px;
     line-height: 30px;
@@ -459,7 +462,7 @@ buttons
   }
 }
 
-@media (max-width:992px) {
+@media (max-width: 992px) {
   .prime_service {
     padding: 50px 0px 50px 0px;
     border-radius: 50px 50px 0px 0px;
@@ -474,17 +477,15 @@ buttons
     gap: 7px;
     margin-bottom: 14px;
   }
-
 }
 
 /* section-4 end  */
 
-
-
 /* section-5 start  */
 .prime_Project {
   padding: 70px 0px 70px 0px;
-  background-image: url(../src/image/project-bg1.png), url(../src/image/project-bg2.png);
+  background-image: url(../src/image/project-bg1.png),
+    url(../src/image/project-bg2.png);
   background-repeat: no-repeat;
   background-position: left top, right top;
   background-size: 10%, 10%;
@@ -499,10 +500,10 @@ buttons
 }
 
 .nav-pills .nav-link.active,
-.nav-pills .show>.nav-link {
+.nav-pills .show > .nav-link {
   color: var(--white-color) !important;
   background-color: var(--primary-color) !important;
-  box-shadow: 0px 7px 10px 0px #212D9266 !important;
+  box-shadow: 0px 7px 10px 0px #212d9266 !important;
 }
 
 .prime_Project .nav-pills .nav-item .frist_tab {
@@ -516,13 +517,13 @@ buttons
 }
 
 .nav-pills .frist_tab.active,
-.nav-pills .show>.frist_tab {
+.nav-pills .show > .frist_tab {
   border: 1px solid var(--primary-color);
   border-radius: 0px 8px 8px 0px !important;
 }
 
 .nav-pills .second_tab.active,
-.nav-pills .show>.second_tab {
+.nav-pills .show > .second_tab {
   border: 1px solid var(--primary-color);
   border-radius: 8px 0px 0px 8px !important;
 }
@@ -546,7 +547,7 @@ buttons
   border-radius: 10px;
 }
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
   .prime_Project .nav-pills .nav-link {
     font-size: 13px;
   }
@@ -556,7 +557,7 @@ buttons
   }
 }
 
-@media (max-width:992px) {
+@media (max-width: 992px) {
   .prime_Project {
     padding: 50px 0px 50px 0px;
   }
@@ -567,7 +568,7 @@ buttons
 /* section-6 start  */
 .prime_choosus {
   padding: 70px 0px 0px 0px;
-  background-color: #E9F1FF;
+  background-color: #e9f1ff;
 }
 
 .prime_choosus .headding_h {
@@ -581,7 +582,7 @@ buttons
   background-color: #c8d4ea95;
   padding: 18px;
   width: 31%;
-  border: 1px solid #C8D3E8;
+  border: 1px solid #c8d3e8;
   border-radius: 16px;
   /* box-shadow: 0px 4px 10px 0px #494d8628; */
 }
@@ -609,7 +610,7 @@ buttons
   background-color: #c8d4ea95;
   padding: 30px 30px 18px 30px !important;
   backdrop-filter: blur(20px);
-  border: 1px solid #C8D3E8;
+  border: 1px solid #c8d3e8;
   border-radius: 16px;
   /* box-shadow: 0px 16px 8px -4px #13174653; */
   position: relative;
@@ -618,7 +619,7 @@ buttons
 
 .form-control:focus {
   color: var(--primary-color) !important;
-  background-color: #E9F1FF !important;
+  background-color: #e9f1ff !important;
   border: 2px solid var(--primary-color) !important;
   outline: none !important;
   box-shadow: none !important;
@@ -626,8 +627,8 @@ buttons
 
 .form-control {
   border-radius: 10px !important;
-  background-color: #E9F1FF;
-  border-color: #E9F1FF;
+  background-color: #e9f1ff;
+  border-color: #e9f1ff;
 }
 
 .file_choose_fild {
@@ -662,13 +663,13 @@ buttons
   color: var(--primary-color);
 }
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
   .choosus_cards div {
     width: 100%;
   }
 }
 
-@media (max-width:992px) {
+@media (max-width: 992px) {
   .prime_choosus {
     padding: 50px 0px 50px 0px;
   }
@@ -737,7 +738,7 @@ buttons
   color: var(--white-color);
 }
 
-@media (max-width:992px) {
+@media (max-width: 992px) {
   .prime_footer {
     background-color: var(--primary-color);
     padding: 50px 0px 50px 0px;
