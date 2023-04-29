@@ -21,19 +21,12 @@ import comm6 from "../image/comm6.jpg";
 import comm7 from "../image/comm7.jpg";
 import comm8 from "../image/comm8.jpg";
 import comm9 from "../image/comm9.jpg";
-import project from "../image/project-img.png";
-import project1 from "../image/project-img1.png";
-import project2 from "../image/project-img2.png";
 import Satisfaction from "../image/Satisfaction.png";
 import Quality from "../image/Quality.png";
 import Hat from "../image/Hat.png";
-import { AddformAction, fileUpload } from "./Store/action/AddFormAction";
+import { AddformAction } from "./Store/action/AddFormAction";
 import { connect } from "react-redux";
-import { useDispatch } from "react-redux";
-import { Toast } from "bootstrap";
-import { Form, ToastHeader } from "react-bootstrap";
 import Image from "../image/Primecon Logo.png";
-import { useSelector } from "react-redux";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import $ from 'jquery'
@@ -42,9 +35,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from "react-toastify";
 
 const LandingPage = (props) => {
-  // console.log(props);
-  const dispatch = useDispatch();
-  const [showTopBtn, setShowTopBtn] = useState(false);
+   // console.log(props);
+   const [showTopBtn, setShowTopBtn] = useState(false);
+   const [checkButton, setCheckButton] = useState('Submit');
+   // const [checkFile, setCheckFile] = useState()
+   // const [buttonDisable, setButtonDisable] = useState(true);
   const [inputChangeValue, setinputChangeValue] = useState({
     name: "",
     email: "",
@@ -192,12 +187,13 @@ const LandingPage = (props) => {
 
     let isValid = isValidate()
     if (isValid) {
+      setCheckButton("Submitting...")
       axios.post("https://primecon-backend.vercel.app/v1/user/add", inputChangeValue)
         .then((res) => {
           console.log('191', res)
           toast.success('Successfully Submmited !', {
             position: "top-right",
-            autoClose: 5000,
+            autoClose: 3000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -205,7 +201,9 @@ const LandingPage = (props) => {
             progress: undefined,
             theme: "light",
           });
-          e.target.files.value = []
+          // setTimeout(() => {
+            setCheckButton("Submit")
+          // }, 3000);
           resetForm()
         })
         .catch((error) => {
@@ -791,7 +789,7 @@ const LandingPage = (props) => {
                     className="buttons"
                     type="submit"
                   >
-                    Submit
+                     {checkButton}
                   </button>
                 </div>
               </form>
