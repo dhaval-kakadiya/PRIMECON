@@ -119,8 +119,7 @@ const LandingPage = (props) => {
     for (let i = 0; i < e.target.files.length; i++) {
       formData.append('image', e.target.files[i])
     }
-
-    axios.post("https://primecon-backend.vercel.app/v1/user/upload-file", formData)
+    axios.post("http://13.211.70.92:3004/v1/user/upload-file", formData)
       .then((res) => {
         console.log('129', res.data)
         setinputChangeValue({
@@ -188,7 +187,7 @@ const LandingPage = (props) => {
     let isValid = isValidate()
     if (isValid) {
       setCheckButton("Submitting...")
-      axios.post("https://primecon-backend.vercel.app/v1/user/add", inputChangeValue)
+      axios.post("http://13.211.70.92:3004/v1/user/add", inputChangeValue)
         .then((res) => {
           console.log('191', res)
           toast.success('Successfully Submmited !', {
