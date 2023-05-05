@@ -67,7 +67,7 @@ export const fileUpload = (x) => {
   //     formData.append('image', e.target.files[i])
   //   }
 
-  //   axios.post("http://13.211.70.92:3004/v1/user/upload-file", formData)
+  //   axios.post("https://primecon-backend.onrender.com/v1/user/upload-file", formData)
   //     .then((res) => {
   //       setinputChangeValue({
   //         ...inputChangeValue,
