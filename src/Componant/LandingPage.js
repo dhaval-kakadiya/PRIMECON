@@ -35,17 +35,17 @@ import { Form, ToastHeader } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import Image from "../image/Primecon Logo.png";
 import { useSelector } from "react-redux";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import $ from 'jquery'
+import AOS from "aos";
+import "aos/dist/aos.css";
+import $ from "jquery";
 import axios from "axios";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 const LandingPage = (props) => {
   // console.log(props);
   const dispatch = useDispatch();
   const [showTopBtn, setShowTopBtn] = useState(false);
-  const [checkButton, setCheckButton] = useState('Submit');
+  const [checkButton, setCheckButton] = useState("Submit");
   // const [checkFile, setCheckFile] = useState()
   // const [buttonDisable, setButtonDisable] = useState(true);
   const [inputChangeValue, setinputChangeValue] = useState({
@@ -54,10 +54,10 @@ const LandingPage = (props) => {
     phone: "",
     pinCode: "",
     message: "",
-    files: []
+    files: [],
   });
 
-  const [error, setError] = useState({})
+  const [error, setError] = useState({});
   // const [error, seterror] = useState({
   //   name: false,
   //   email: false,
@@ -69,10 +69,10 @@ const LandingPage = (props) => {
 
   useEffect(() => {
     AOS.init();
-  }, [])
+  }, []);
 
   useEffect(() => {
-    window.addEventListener('scroll', () => {
+    window.addEventListener("scroll", () => {
       if (window.scrollY > 300) {
         setShowTopBtn(true);
       } else {
@@ -82,21 +82,21 @@ const LandingPage = (props) => {
   }, []);
 
   const closeButtonJquery = () => {
-    $('#button-reset').click(function (e) {
-      var $el = $('#file-to-upload');
-      $el.wrap('<form>').closest('form').get(0).reset();
+    $("#button-reset").click(function (e) {
+      var $el = $("#file-to-upload");
+      $el.wrap("<form>").closest("form").get(0).reset();
       $el.unwrap();
     });
-  }
+  };
 
   useEffect(() => {
-    closeButtonJquery()
-  })
+    closeButtonJquery();
+  });
 
   const goToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   };
 
@@ -112,68 +112,73 @@ const LandingPage = (props) => {
     setinputChangeValue({
       ...inputChangeValue,
       [e.target.name]: e.target.value,
-    })
+    });
     // setinputChangeValue((preve) => (
     //   console.log(preve)
     // ))
   };
 
   const onFileUpload = (e) => {
-
     // dispatch(fileUpload(e.target.files,inputChangeValue,setinputChangeValue))
 
     const formData = new FormData();
 
     for (let i = 0; i < e.target.files.length; i++) {
-      formData.append('image', e.target.files[i])
+      formData.append("image", e.target.files[i]);
     }
 
-    axios.post("https://primecon-backend.onrender.com/v1/user/upload-file", formData)
+    axios
+      .post(
+        "https://primecon-backend.onrender.com/v1/user/upload-file",
+        formData
+      )
       .then((res) => {
         if (res.status === 200) {
-          console.log('129', res)
+          console.log("129", res);
           // setCheckFile(res.status)
           // setButtonDisable(false)
           setinputChangeValue({
             ...inputChangeValue,
-            files: res.data.data
-          })
+            files: res.data.data,
+          });
         }
       })
       .catch((error) => {
-        console.log(error)
-      })
-  }
+        console.log(error);
+      });
+  };
 
   const isValidate = () => {
-    let err = {}
+    let err = {};
 
-    if (inputChangeValue.name === '') {
-      err.name = "Name is Required"
+    if (inputChangeValue.name === "") {
+      err.name = "Name is Required";
     }
 
-    if (inputChangeValue.phone === '') {
-      err.phone = "phone is Required"
-    }
-    else {
-      if (inputChangeValue.phone.length > 10 || inputChangeValue.phone.length < 10) {
-        err.phone = "Please Enter Valid phone"
+    if (inputChangeValue.phone === "") {
+      err.phone = "phone is Required";
+    } else {
+      if (
+        inputChangeValue.phone.length > 10 ||
+        inputChangeValue.phone.length < 10
+      ) {
+        err.phone = "Please Enter Valid phone";
       }
     }
 
     if (inputChangeValue.email === "") {
-      err.email = "Email is Required"
+      err.email = "Email is Required";
     } else {
-      let regex = /^\w+([\.-]?\w+)*@gmail.com/
+      let regex = /^\w+([\.-]?\w+)*@gmail.com/;
       if (!regex.test(inputChangeValue.email)) {
-        err.email = "Please Enter Valid Email"
+        err.email = "Please Enter Valid Email";
       }
     }
 
-    setError({ ...err })
+    setError({ ...err });
 
-    return Object.keys(err).length < 1
-  }
+    return Object.keys(err).length < 1;
+  };
 
   const resetForm = () => {
     setinputChangeValue({
@@ -183,17 +188,25 @@ const LandingPage = (props) => {
       pinCode: "",
       message: "",
       files: [],
-    })
-  }
+    });
+  };
 
   const inputSubmit = (e) => {
-
     e.preventDefault();
 
-    let isValid = isValidate()
+    let isValid = isValidate();
     if (isValid) {
       setCheckButton("Submitting...");
-      axios.post("https://primecon-backend.onrender.com/v1/user/add", inputChangeValue)
+      axios({
+        method: "post",
+        url: `https://primecon-backend.onrender.com/v1/user/add`,
+        withCredentials: false,
+        data: inputChangeValue,
+      })
+        // .post (
+        //   "https://primecon-backend.onrender.com/v1/user/add",
+        //   inputChangeValue
+        // )
         .then((res) => {
           console.log("191", res);
           toast.success("Successfully Submmited !", {
@@ -209,15 +222,16 @@ const LandingPage = (props) => {
           // setTimeout(() => {
           setCheckButton("Submit");
           // }, 3000);
+          document.getElementById("file-to-upload").value = "";
+
           resetForm();
         })
         .catch((error) => {
-          console.log(error)
-        })
-      } else {
-        console.log("b");
-      }
-
+          console.log(error);
+        });
+    } else {
+      console.log("b");
+    }
 
     // if (
     //   inputChangeValue.name !== "" &&
@@ -282,11 +296,13 @@ const LandingPage = (props) => {
 
       <section className="prime_weare" id="whoweare">
         <div className="container">
-
           {showTopBtn && (
-            <span id="buttonnn" onClick={goToTop}
+            <span
+              id="buttonnn"
+              onClick={goToTop}
               data-aos="fade-left"
-              data-aos-duration="5000">
+              data-aos-duration="5000"
+            >
               <i className="fw-bold fa-solid fa-chevron-up"></i>
             </span>
           )}
@@ -456,45 +472,135 @@ const LandingPage = (props) => {
               aria-labelledby="pills-home-tab"
             >
               <div className="row row-cols-2 row-cols-md-3 g-4 justify-content-center harsh">
-                <div className="col" data-aos="fade-up" data-aos-duration="1000">
+                <div
+                  className="col"
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                >
                   {" "}
-                  <img className="proimgborder" src={res1} alt="" width="100%" />
+                  <img
+                    className="proimgborder"
+                    src={res1}
+                    alt=""
+                    width="100%"
+                  />
                 </div>
-                <div className="col" data-aos="fade-up" data-aos-duration="1000">
+                <div
+                  className="col"
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                >
                   {" "}
-                  <img className="proimgborder" src={res2} alt="" width="100%" />
+                  <img
+                    className="proimgborder"
+                    src={res2}
+                    alt=""
+                    width="100%"
+                  />
                 </div>
-                <div className="col" data-aos="fade-up" data-aos-duration="1000">
+                <div
+                  className="col"
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                >
                   {" "}
-                  <img className="proimgborder" src={res3} alt="" width="100%" />
+                  <img
+                    className="proimgborder"
+                    src={res3}
+                    alt=""
+                    width="100%"
+                  />
                 </div>
-                <div className="col" data-aos="fade-up" data-aos-duration="1000">
+                <div
+                  className="col"
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                >
                   {" "}
-                  <img className="proimgborder" src={res4} alt="" width="100%" />
+                  <img
+                    className="proimgborder"
+                    src={res4}
+                    alt=""
+                    width="100%"
+                  />
                 </div>
-                <div className="col" data-aos="fade-up" data-aos-duration="1000">
+                <div
+                  className="col"
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                >
                   {" "}
-                  <img className="proimgborder" src={res5} alt="" width="100%" />
+                  <img
+                    className="proimgborder"
+                    src={res5}
+                    alt=""
+                    width="100%"
+                  />
                 </div>
-                <div className="col" data-aos="fade-up" data-aos-duration="1000">
+                <div
+                  className="col"
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                >
                   {" "}
-                  <img className="proimgborder" src={res1} alt="" width="100%" />
+                  <img
+                    className="proimgborder"
+                    src={res1}
+                    alt=""
+                    width="100%"
+                  />
                 </div>
-                <div className="col" data-aos="fade-up" data-aos-duration="1000">
+                <div
+                  className="col"
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                >
                   {" "}
-                  <img className="proimgborder" src={res2} alt="" width="100%" />
+                  <img
+                    className="proimgborder"
+                    src={res2}
+                    alt=""
+                    width="100%"
+                  />
                 </div>
-                <div className="col" data-aos="fade-up" data-aos-duration="1000">
+                <div
+                  className="col"
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                >
                   {" "}
-                  <img className="proimgborder" src={res3} alt="" width="100%" />
+                  <img
+                    className="proimgborder"
+                    src={res3}
+                    alt=""
+                    width="100%"
+                  />
                 </div>
-                <div className="col" data-aos="fade-up" data-aos-duration="1000">
+                <div
+                  className="col"
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                >
                   {" "}
-                  <img className="proimgborder" src={res4} alt="" width="100%" />
+                  <img
+                    className="proimgborder"
+                    src={res4}
+                    alt=""
+                    width="100%"
+                  />
                 </div>
-                <div className="col d-block d-md-none" data-aos="fade-up" data-aos-duration="1000">
+                <div
+                  className="col d-block d-md-none"
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                >
                   {" "}
-                  <img className="proimgborder" src={res5} alt="" width="100%" />
+                  <img
+                    className="proimgborder"
+                    src={res5}
+                    alt=""
+                    width="100%"
+                  />
                 </div>
               </div>
             </div>
@@ -505,45 +611,135 @@ const LandingPage = (props) => {
               aria-labelledby="pills-profile-tab"
             >
               <div className="row row-cols-2 row-cols-md-3 g-4 justify-content-center">
-                <div className="col" data-aos="fade-up" data-aos-duration="1000">
+                <div
+                  className="col"
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                >
                   {" "}
-                  <img className="proimgborder" src={comm1} alt="" width="100%" />
+                  <img
+                    className="proimgborder"
+                    src={comm1}
+                    alt=""
+                    width="100%"
+                  />
                 </div>
-                <div className="col" data-aos="fade-up" data-aos-duration="1000">
+                <div
+                  className="col"
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                >
                   {" "}
-                  <img className="proimgborder" src={comm2} alt="" width="100%" />
+                  <img
+                    className="proimgborder"
+                    src={comm2}
+                    alt=""
+                    width="100%"
+                  />
                 </div>
-                <div className="col" data-aos="fade-up" data-aos-duration="1000">
+                <div
+                  className="col"
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                >
                   {" "}
-                  <img className="proimgborder" src={comm3} alt="" width="100%" />
+                  <img
+                    className="proimgborder"
+                    src={comm3}
+                    alt=""
+                    width="100%"
+                  />
                 </div>
-                <div className="col" data-aos="fade-up" data-aos-duration="1000">
+                <div
+                  className="col"
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                >
                   {" "}
-                  <img className="proimgborder" src={comm4} alt="" width="100%" />
+                  <img
+                    className="proimgborder"
+                    src={comm4}
+                    alt=""
+                    width="100%"
+                  />
                 </div>
-                <div className="col" data-aos="fade-up" data-aos-duration="1000">
+                <div
+                  className="col"
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                >
                   {" "}
-                  <img className="proimgborder" src={comm5} alt="" width="100%" />
+                  <img
+                    className="proimgborder"
+                    src={comm5}
+                    alt=""
+                    width="100%"
+                  />
                 </div>
-                <div className="col" data-aos="fade-up" data-aos-duration="1000">
+                <div
+                  className="col"
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                >
                   {" "}
-                  <img className="proimgborder" src={comm6} alt="" width="100%" />
+                  <img
+                    className="proimgborder"
+                    src={comm6}
+                    alt=""
+                    width="100%"
+                  />
                 </div>
-                <div className="col" data-aos="fade-up" data-aos-duration="1000">
+                <div
+                  className="col"
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                >
                   {" "}
-                  <img className="proimgborder" src={comm7} alt="" width="100%" />
+                  <img
+                    className="proimgborder"
+                    src={comm7}
+                    alt=""
+                    width="100%"
+                  />
                 </div>
-                <div className="col" data-aos="fade-up" data-aos-duration="1000">
+                <div
+                  className="col"
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                >
                   {" "}
-                  <img className="proimgborder" src={comm8} alt="" width="100%" />
+                  <img
+                    className="proimgborder"
+                    src={comm8}
+                    alt=""
+                    width="100%"
+                  />
                 </div>
-                <div className="col" data-aos="fade-up" data-aos-duration="1000">
+                <div
+                  className="col"
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                >
                   {" "}
-                  <img className="proimgborder" src={comm9} alt="" width="100%" />
+                  <img
+                    className="proimgborder"
+                    src={comm9}
+                    alt=""
+                    width="100%"
+                  />
                 </div>
-                <div className="col d-block d-md-none" data-aos="fade-up" data-aos-duration="1000">
+                <div
+                  className="col d-block d-md-none"
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                >
                   {" "}
-                  <img className="proimgborder" src={comm1} alt="" width="100%" />
+                  <img
+                    className="proimgborder"
+                    src={comm1}
+                    alt=""
+                    width="100%"
+                  />
                 </div>
               </div>
             </div>
@@ -637,22 +833,20 @@ const LandingPage = (props) => {
                     name="name"
                     type="text"
                     value={inputChangeValue.name}
-                    className={inputChangeValue.name === "" ? (
-                      error.name ? "is-invalid form-control" : "form-control"
-                    ) : "form-control"}
+                    className={
+                      inputChangeValue.name === ""
+                        ? error.name
+                          ? "is-invalid form-control"
+                          : "form-control"
+                        : "form-control"
+                    }
                     autoComplete="off"
                     placeholder="Name"
                     onChange={onInputChange}
                   />
-                  {
-                    inputChangeValue.name === '' && (
-                      error.name && (
-                        <small className="text-danger">
-                          {error.name}
-                        </small>
-                      )
-                    )
-                  }
+                  {inputChangeValue.name === "" && error.name && (
+                    <small className="text-danger">{error.name}</small>
+                  )}
                 </div>
 
                 <div className="col-md-6">
@@ -661,12 +855,21 @@ const LandingPage = (props) => {
                     type="phone"
                     value={inputChangeValue.phone}
                     className={`
-                      ${inputChangeValue.phone === "" ? (
-                        error.phone ? "is-invalid form-control" : "form-control"
-                      ) : "form-control"}
-                  ${(inputChangeValue.phone.length > 10 || inputChangeValue.phone.length < 10) ? (
-                        error.phone ? "is-invalid form-control" : "form-control"
-                      ) : "form-control"}
+                      ${
+                        inputChangeValue.phone === ""
+                          ? error.phone
+                            ? "is-invalid form-control"
+                            : "form-control"
+                          : "form-control"
+                      }
+                  ${
+                    inputChangeValue.phone.length > 10 ||
+                    inputChangeValue.phone.length < 10
+                      ? error.phone
+                        ? "is-invalid form-control"
+                        : "form-control"
+                      : "form-control"
+                  }
                     `}
                     id="inputPassword4"
                     maxLength="10"
@@ -674,21 +877,20 @@ const LandingPage = (props) => {
                     placeholder="Phone"
                     onChange={onInputChange}
                   />
-                  {
-                    inputChangeValue.phone === '' ?
-                      error.phone ? (
-                        <small className="text-danger">
-                          {error.phone}
-                        </small>
-                      ) : ''
-                      : (inputChangeValue.phone.length > 10 || inputChangeValue.phone.length < 10) ?
-                        error.phone && (
-                          <small className="text-danger">
-                            {error.phone}
-                          </small>
-                        )
-                        : ''
-                  }
+                  {inputChangeValue.phone === "" ? (
+                    error.phone ? (
+                      <small className="text-danger">{error.phone}</small>
+                    ) : (
+                      ""
+                    )
+                  ) : inputChangeValue.phone.length > 10 ||
+                    inputChangeValue.phone.length < 10 ? (
+                    error.phone && (
+                      <small className="text-danger">{error.phone}</small>
+                    )
+                  ) : (
+                    ""
+                  )}
                   {/* {
                     error.phone && (
                       <small className="text-danger">
@@ -703,33 +905,41 @@ const LandingPage = (props) => {
                     type="email"
                     value={inputChangeValue.email}
                     className={`
-                      ${inputChangeValue.email === "" ? (
-                        error.email ? "is-invalid form-control" : "form-control"
-                      ) : "form-control"}
-                  ${(!(/^\w+([\.-]?\w+)*@gmail.com/).test(inputChangeValue.email)) ? (
-                        error.email ? "is-invalid form-control" : "form-control"
-                      ) : "form-control"}
+                      ${
+                        inputChangeValue.email === ""
+                          ? error.email
+                            ? "is-invalid form-control"
+                            : "form-control"
+                          : "form-control"
+                      }
+                  ${
+                    !/^\w+([\.-]?\w+)*@gmail.com/.test(inputChangeValue.email)
+                      ? error.email
+                        ? "is-invalid form-control"
+                        : "form-control"
+                      : "form-control"
+                  }
                     `}
                     id="inputEmail4"
                     autoComplete="off"
                     placeholder="Email id"
                     onChange={onInputChange}
                   />
-                  {
-                    inputChangeValue.email === '' ?
-                      error.email ? (
-                        <small className="text-danger">
-                          {error.email}
-                        </small>
-                      ) : ''
-                      : (!(/^\w+([\.-]?\w+)*@gmail.com/).test(inputChangeValue.email)) ?
-                        error.email && (
-                          <small className="text-danger">
-                            {error.email}
-                          </small>
-                        )
-                        : ''
-                  }
+                  {inputChangeValue.email === "" ? (
+                    error.email ? (
+                      <small className="text-danger">{error.email}</small>
+                    ) : (
+                      ""
+                    )
+                  ) : !/^\w+([\.-]?\w+)*@gmail.com/.test(
+                      inputChangeValue.email
+                    ) ? (
+                    error.email && (
+                      <small className="text-danger">{error.email}</small>
+                    )
+                  ) : (
+                    ""
+                  )}
                   {/* {
                       error.email && (
                         <small className="text-danger">
@@ -784,25 +994,33 @@ const LandingPage = (props) => {
                 {/* new add */}
                 <div className="input-group">
                   <fieldset className="col-12">
-                    <input name="files" onChange={onFileUpload} className="form-control" id="file-to-upload" type="file" multiple />
-                    <button id="button-reset" className="close_button" type="button">
+                    <input
+                      name="files"
+                      onChange={onFileUpload}
+                      className="form-control"
+                      id="file-to-upload"
+                      type="file"
+                      multiple
+                    />
+                    <button
+                      id="button-reset"
+                      className="close_button"
+                      type="button"
+                    >
                       <i className="fa-regular fa-circle-xmark"></i>
                     </button>
                   </fieldset>
                 </div>
                 <div className="col-12">
-                  <button
-                    className="buttons"
-                    type="submit"
-                  >
+                  <button className="buttons" type="submit">
                     {checkButton}
                   </button>
                 </div>
               </form>
             </div>
           </div>
-        </div >
-      </section >
+        </div>
+      </section>
 
       <section className="prime_footer">
         <div className="container text-center text-lg-start">
@@ -818,7 +1036,8 @@ const LandingPage = (props) => {
                 </li>
                 <li>
                   <a href="mailto:info@primecon.ca">
-                    <i className="fa-solid fa-envelope p-2"></i> Info@primecon.ca
+                    <i className="fa-solid fa-envelope p-2"></i>{" "}
+                    Info@primecon.ca
                   </a>
                 </li>
                 <li>
@@ -883,7 +1102,7 @@ const LandingPage = (props) => {
       </section>
 
       <ToastContainer />
-    </div >
+    </div>
   );
 };
 
